@@ -39,13 +39,8 @@ namespace NetSeal_Helper.Forms
             this.gbxExtras = new System.Windows.Forms.GroupBox();
             this.btnGetVariable = new System.Windows.Forms.Button();
             this.btnViewNews = new System.Windows.Forms.Button();
-            this.wtxtVariables = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.gbxLicense = new System.Windows.Forms.GroupBox();
-            this.wtxtTargetPath = new NetSeal_Helper.Controls.WaterMarkTextBox();
-            this.wtxtPassword = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.btnBrowseTarget = new System.Windows.Forms.Button();
-            this.wtxtId = new NetSeal_Helper.Controls.WaterMarkTextBox();
-            this.wtxtUsername = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.gbxLicenseDetails = new System.Windows.Forms.GroupBox();
             this.lblGlobalMessage = new System.Windows.Forms.Label();
             this.txtGlobalMessage = new System.Windows.Forms.TextBox();
@@ -75,25 +70,19 @@ namespace NetSeal_Helper.Forms
             this.btnExchangeEncrypt = new System.Windows.Forms.Button();
             this.lblExchangeICryptResult = new System.Windows.Forms.Label();
             this.txtExchangeICryptResult = new System.Windows.Forms.TextBox();
-            this.wtxtExchangeKey = new NetSeal_Helper.Controls.WaterMarkTextBox();
-            this.wtxtExchangeDataToEncryptDecrypt = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.lblExchangeKey = new System.Windows.Forms.Label();
             this.lblExchangeDataToCryptDecrypt = new System.Windows.Forms.Label();
             this.gbxExchange = new System.Windows.Forms.GroupBox();
             this.btnSaveLastData = new System.Windows.Forms.Button();
             this.btnExchangeSaveLastDataAsAscii = new System.Windows.Forms.Button();
             this.btnExchangeSaveLastData = new System.Windows.Forms.Button();
-            this.wtxtExchangeResult = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.btnExchangeViewLastData = new System.Windows.Forms.Button();
             this.btnExchangeDecryptLastData = new System.Windows.Forms.Button();
             this.btnExchangeClearCookies = new System.Windows.Forms.Button();
             this.btnExchangeDownloadData = new System.Windows.Forms.Button();
             this.btnExchangeUploadValues = new System.Windows.Forms.Button();
-            this.wtxtExchangeRequest = new NetSeal_Helper.Controls.WaterMarkTextBox();
-            this.wtxtExchangeUrl = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.tbpLicenseManager = new System.Windows.Forms.TabPage();
             this.btnLicenseManagerSearchProgramName = new System.Windows.Forms.Button();
-            this.wtxtLicenseManagerSearchProgramName = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.ltvLicenses = new System.Windows.Forms.ListView();
             this.cmsLicenseManager = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.getLicensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,17 +113,28 @@ namespace NetSeal_Helper.Forms
             this.btnRestoreSettings = new System.Windows.Forms.Button();
             this.brnTestWarnMessage = new System.Windows.Forms.Button();
             this.btnTestInfo = new System.Windows.Forms.Button();
-            this.cpcmbErrorColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
-            this.cpcmbWarningColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
-            this.cpcmbInformationColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
             this.btnSaveSettings = new System.Windows.Forms.Button();
-            this.cpcmbBackColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
-            this.cpcmbTimeColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
             this.lvlErrorColor = new System.Windows.Forms.Label();
             this.lvlWarningColor = new System.Windows.Forms.Label();
             this.lblInformationColor = new System.Windows.Forms.Label();
             this.lvlBackColor = new System.Windows.Forms.Label();
             this.lblTimeColor = new System.Windows.Forms.Label();
+            this.wtxtVariables = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtTargetPath = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtPassword = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtId = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtUsername = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtExchangeKey = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtExchangeDataToEncryptDecrypt = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtExchangeResult = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtExchangeRequest = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtExchangeUrl = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.wtxtLicenseManagerSearchProgramName = new NetSeal_Helper.Controls.WaterMarkTextBox();
+            this.cpcmbErrorColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
+            this.cpcmbWarningColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
+            this.cpcmbInformationColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
+            this.cpcmbBackColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
+            this.cpcmbTimeColor = new NetSeal_Helper.Controls.ColorPickerComboBox();
             this.tbcMain.SuspendLayout();
             this.tbpLicense.SuspendLayout();
             this.gbxExtras.SuspendLayout();
@@ -236,18 +236,6 @@ namespace NetSeal_Helper.Forms
             this.btnViewNews.UseVisualStyleBackColor = true;
             this.btnViewNews.Click += new System.EventHandler(this.btnViewNews_Click);
             // 
-            // wtxtVariables
-            // 
-            this.wtxtVariables.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.wtxtVariables.Location = new System.Drawing.Point(6, 22);
-            this.wtxtVariables.Name = "wtxtVariables";
-            this.wtxtVariables.Size = new System.Drawing.Size(430, 21);
-            this.wtxtVariables.TabIndex = 2;
-            this.wtxtVariables.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtVariables.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtVariables.WaterMarkText = "Variable1, Variable2..";
-            // 
             // gbxLicense
             // 
             this.gbxLicense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -265,30 +253,6 @@ namespace NetSeal_Helper.Forms
             this.gbxLicense.TabStop = false;
             this.gbxLicense.Text = "License";
             // 
-            // wtxtTargetPath
-            // 
-            this.wtxtTargetPath.AllowDrop = true;
-            this.wtxtTargetPath.Location = new System.Drawing.Point(6, 20);
-            this.wtxtTargetPath.Name = "wtxtTargetPath";
-            this.wtxtTargetPath.Size = new System.Drawing.Size(538, 21);
-            this.wtxtTargetPath.TabIndex = 9;
-            this.wtxtTargetPath.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtTargetPath.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtTargetPath.WaterMarkText = "Original Target Path | Drag and Drop the file or press browse";
-            this.wtxtTargetPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.wtxtTargetPath_DragDrop);
-            this.wtxtTargetPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.wtxtTargetPath_DragEnter);
-            // 
-            // wtxtPassword
-            // 
-            this.wtxtPassword.Location = new System.Drawing.Point(187, 47);
-            this.wtxtPassword.Name = "wtxtPassword";
-            this.wtxtPassword.Size = new System.Drawing.Size(175, 21);
-            this.wtxtPassword.TabIndex = 7;
-            this.wtxtPassword.UseSystemPasswordChar = true;
-            this.wtxtPassword.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtPassword.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtPassword.WaterMarkText = "Password";
-            // 
             // btnBrowseTarget
             // 
             this.btnBrowseTarget.Location = new System.Drawing.Point(550, 18);
@@ -298,28 +262,6 @@ namespace NetSeal_Helper.Forms
             this.btnBrowseTarget.Text = "Browse";
             this.btnBrowseTarget.UseVisualStyleBackColor = true;
             this.btnBrowseTarget.Click += new System.EventHandler(this.btnBrowseTarget_Click);
-            // 
-            // wtxtId
-            // 
-            this.wtxtId.Location = new System.Drawing.Point(368, 47);
-            this.wtxtId.MaxLength = 8;
-            this.wtxtId.Name = "wtxtId";
-            this.wtxtId.Size = new System.Drawing.Size(175, 21);
-            this.wtxtId.TabIndex = 8;
-            this.wtxtId.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtId.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtId.WaterMarkText = "ID";
-            // 
-            // wtxtUsername
-            // 
-            this.wtxtUsername.Location = new System.Drawing.Point(6, 47);
-            this.wtxtUsername.MaxLength = 14;
-            this.wtxtUsername.Name = "wtxtUsername";
-            this.wtxtUsername.Size = new System.Drawing.Size(175, 21);
-            this.wtxtUsername.TabIndex = 6;
-            this.wtxtUsername.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtUsername.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtUsername.WaterMarkText = "Username";
             // 
             // gbxLicenseDetails
             // 
@@ -619,28 +561,6 @@ namespace NetSeal_Helper.Forms
             this.txtExchangeICryptResult.Size = new System.Drawing.Size(582, 63);
             this.txtExchangeICryptResult.TabIndex = 11;
             // 
-            // wtxtExchangeKey
-            // 
-            this.wtxtExchangeKey.Location = new System.Drawing.Point(97, 22);
-            this.wtxtExchangeKey.Name = "wtxtExchangeKey";
-            this.wtxtExchangeKey.Size = new System.Drawing.Size(536, 21);
-            this.wtxtExchangeKey.TabIndex = 7;
-            this.wtxtExchangeKey.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtExchangeKey.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtExchangeKey.WaterMarkText = "Empty if you want to use the default key (the one you got in License after log in" +
-    ")";
-            // 
-            // wtxtExchangeDataToEncryptDecrypt
-            // 
-            this.wtxtExchangeDataToEncryptDecrypt.Location = new System.Drawing.Point(51, 49);
-            this.wtxtExchangeDataToEncryptDecrypt.Multiline = true;
-            this.wtxtExchangeDataToEncryptDecrypt.Name = "wtxtExchangeDataToEncryptDecrypt";
-            this.wtxtExchangeDataToEncryptDecrypt.Size = new System.Drawing.Size(582, 63);
-            this.wtxtExchangeDataToEncryptDecrypt.TabIndex = 10;
-            this.wtxtExchangeDataToEncryptDecrypt.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtExchangeDataToEncryptDecrypt.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtExchangeDataToEncryptDecrypt.WaterMarkText = "Data to encrypt/decrypt";
-            // 
             // lblExchangeKey
             // 
             this.lblExchangeKey.AutoSize = true;
@@ -709,17 +629,6 @@ namespace NetSeal_Helper.Forms
             this.btnExchangeSaveLastData.UseVisualStyleBackColor = true;
             this.btnExchangeSaveLastData.Click += new System.EventHandler(this.btnExchangeSaveLastDataAsUtf8_Click);
             // 
-            // wtxtExchangeResult
-            // 
-            this.wtxtExchangeResult.Location = new System.Drawing.Point(6, 136);
-            this.wtxtExchangeResult.Multiline = true;
-            this.wtxtExchangeResult.Name = "wtxtExchangeResult";
-            this.wtxtExchangeResult.Size = new System.Drawing.Size(627, 75);
-            this.wtxtExchangeResult.TabIndex = 8;
-            this.wtxtExchangeResult.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtExchangeResult.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtExchangeResult.WaterMarkText = "Result";
-            // 
             // btnExchangeViewLastData
             // 
             this.btnExchangeViewLastData.Location = new System.Drawing.Point(146, 217);
@@ -770,27 +679,6 @@ namespace NetSeal_Helper.Forms
             this.btnExchangeUploadValues.UseVisualStyleBackColor = true;
             this.btnExchangeUploadValues.Click += new System.EventHandler(this.btnExchangeUploadValues_Click);
             // 
-            // wtxtExchangeRequest
-            // 
-            this.wtxtExchangeRequest.Location = new System.Drawing.Point(6, 47);
-            this.wtxtExchangeRequest.Multiline = true;
-            this.wtxtExchangeRequest.Name = "wtxtExchangeRequest";
-            this.wtxtExchangeRequest.Size = new System.Drawing.Size(627, 83);
-            this.wtxtExchangeRequest.TabIndex = 1;
-            this.wtxtExchangeRequest.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtExchangeRequest.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtExchangeRequest.WaterMarkText = "Example:\r\n\r\nt = 0123456789\r\nn = Alcatraz";
-            // 
-            // wtxtExchangeUrl
-            // 
-            this.wtxtExchangeUrl.Location = new System.Drawing.Point(6, 20);
-            this.wtxtExchangeUrl.Name = "wtxtExchangeUrl";
-            this.wtxtExchangeUrl.Size = new System.Drawing.Size(627, 21);
-            this.wtxtExchangeUrl.TabIndex = 0;
-            this.wtxtExchangeUrl.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtExchangeUrl.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtExchangeUrl.WaterMarkText = "http://www.example.com/example.php";
-            // 
             // tbpLicenseManager
             // 
             this.tbpLicenseManager.Controls.Add(this.btnLicenseManagerSearchProgramName);
@@ -813,16 +701,6 @@ namespace NetSeal_Helper.Forms
             this.btnLicenseManagerSearchProgramName.Text = "Get Program Name";
             this.btnLicenseManagerSearchProgramName.UseVisualStyleBackColor = true;
             this.btnLicenseManagerSearchProgramName.Click += new System.EventHandler(this.btnLicenseManagerSearchProgramName_Click);
-            // 
-            // wtxtLicenseManagerSearchProgramName
-            // 
-            this.wtxtLicenseManagerSearchProgramName.Location = new System.Drawing.Point(6, 487);
-            this.wtxtLicenseManagerSearchProgramName.Name = "wtxtLicenseManagerSearchProgramName";
-            this.wtxtLicenseManagerSearchProgramName.Size = new System.Drawing.Size(507, 21);
-            this.wtxtLicenseManagerSearchProgramName.TabIndex = 1;
-            this.wtxtLicenseManagerSearchProgramName.WaterMarkColor = System.Drawing.SystemColors.GrayText;
-            this.wtxtLicenseManagerSearchProgramName.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
-            this.wtxtLicenseManagerSearchProgramName.WaterMarkText = "Netseal ID";
             // 
             // ltvLicenses
             // 
@@ -1129,36 +1007,6 @@ namespace NetSeal_Helper.Forms
             this.btnTestInfo.UseVisualStyleBackColor = true;
             this.btnTestInfo.Click += new System.EventHandler(this.btnTestInfo_Click);
             // 
-            // cpcmbErrorColor
-            // 
-            this.cpcmbErrorColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cpcmbErrorColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cpcmbErrorColor.FormattingEnabled = true;
-            this.cpcmbErrorColor.Location = new System.Drawing.Point(82, 132);
-            this.cpcmbErrorColor.Name = "cpcmbErrorColor";
-            this.cpcmbErrorColor.Size = new System.Drawing.Size(255, 22);
-            this.cpcmbErrorColor.TabIndex = 4;
-            // 
-            // cpcmbWarningColor
-            // 
-            this.cpcmbWarningColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cpcmbWarningColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cpcmbWarningColor.FormattingEnabled = true;
-            this.cpcmbWarningColor.Location = new System.Drawing.Point(82, 104);
-            this.cpcmbWarningColor.Name = "cpcmbWarningColor";
-            this.cpcmbWarningColor.Size = new System.Drawing.Size(255, 22);
-            this.cpcmbWarningColor.TabIndex = 4;
-            // 
-            // cpcmbInformationColor
-            // 
-            this.cpcmbInformationColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cpcmbInformationColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cpcmbInformationColor.FormattingEnabled = true;
-            this.cpcmbInformationColor.Location = new System.Drawing.Point(82, 76);
-            this.cpcmbInformationColor.Name = "cpcmbInformationColor";
-            this.cpcmbInformationColor.Size = new System.Drawing.Size(255, 22);
-            this.cpcmbInformationColor.TabIndex = 4;
-            // 
             // btnSaveSettings
             // 
             this.btnSaveSettings.Location = new System.Drawing.Point(343, 55);
@@ -1168,26 +1016,6 @@ namespace NetSeal_Helper.Forms
             this.btnSaveSettings.Text = "Save Settings";
             this.btnSaveSettings.UseVisualStyleBackColor = true;
             this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
-            // 
-            // cpcmbBackColor
-            // 
-            this.cpcmbBackColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cpcmbBackColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cpcmbBackColor.FormattingEnabled = true;
-            this.cpcmbBackColor.Location = new System.Drawing.Point(82, 48);
-            this.cpcmbBackColor.Name = "cpcmbBackColor";
-            this.cpcmbBackColor.Size = new System.Drawing.Size(255, 22);
-            this.cpcmbBackColor.TabIndex = 2;
-            // 
-            // cpcmbTimeColor
-            // 
-            this.cpcmbTimeColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cpcmbTimeColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cpcmbTimeColor.FormattingEnabled = true;
-            this.cpcmbTimeColor.Location = new System.Drawing.Point(82, 20);
-            this.cpcmbTimeColor.Name = "cpcmbTimeColor";
-            this.cpcmbTimeColor.Size = new System.Drawing.Size(255, 22);
-            this.cpcmbTimeColor.TabIndex = 0;
             // 
             // lvlErrorColor
             // 
@@ -1233,6 +1061,178 @@ namespace NetSeal_Helper.Forms
             this.lblTimeColor.Size = new System.Drawing.Size(70, 13);
             this.lblTimeColor.TabIndex = 1;
             this.lblTimeColor.Text = "Time Color";
+            // 
+            // wtxtVariables
+            // 
+            this.wtxtVariables.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wtxtVariables.Location = new System.Drawing.Point(6, 22);
+            this.wtxtVariables.Name = "wtxtVariables";
+            this.wtxtVariables.Size = new System.Drawing.Size(430, 21);
+            this.wtxtVariables.TabIndex = 2;
+            this.wtxtVariables.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtVariables.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtVariables.WaterMarkText = "Variable1, Variable2..";
+            // 
+            // wtxtTargetPath
+            // 
+            this.wtxtTargetPath.AllowDrop = true;
+            this.wtxtTargetPath.Location = new System.Drawing.Point(6, 20);
+            this.wtxtTargetPath.Name = "wtxtTargetPath";
+            this.wtxtTargetPath.Size = new System.Drawing.Size(538, 21);
+            this.wtxtTargetPath.TabIndex = 9;
+            this.wtxtTargetPath.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtTargetPath.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtTargetPath.WaterMarkText = "Original Target Path | Drag and Drop the file or press browse";
+            this.wtxtTargetPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.wtxtTargetPath_DragDrop);
+            this.wtxtTargetPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.wtxtTargetPath_DragEnter);
+            // 
+            // wtxtPassword
+            // 
+            this.wtxtPassword.Location = new System.Drawing.Point(187, 47);
+            this.wtxtPassword.Name = "wtxtPassword";
+            this.wtxtPassword.Size = new System.Drawing.Size(175, 21);
+            this.wtxtPassword.TabIndex = 7;
+            this.wtxtPassword.UseSystemPasswordChar = true;
+            this.wtxtPassword.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtPassword.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtPassword.WaterMarkText = "Password";
+            // 
+            // wtxtId
+            // 
+            this.wtxtId.Location = new System.Drawing.Point(368, 47);
+            this.wtxtId.MaxLength = 8;
+            this.wtxtId.Name = "wtxtId";
+            this.wtxtId.Size = new System.Drawing.Size(175, 21);
+            this.wtxtId.TabIndex = 8;
+            this.wtxtId.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtId.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtId.WaterMarkText = "ID";
+            // 
+            // wtxtUsername
+            // 
+            this.wtxtUsername.Location = new System.Drawing.Point(6, 47);
+            this.wtxtUsername.MaxLength = 14;
+            this.wtxtUsername.Name = "wtxtUsername";
+            this.wtxtUsername.Size = new System.Drawing.Size(175, 21);
+            this.wtxtUsername.TabIndex = 6;
+            this.wtxtUsername.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtUsername.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtUsername.WaterMarkText = "Username";
+            // 
+            // wtxtExchangeKey
+            // 
+            this.wtxtExchangeKey.Location = new System.Drawing.Point(97, 22);
+            this.wtxtExchangeKey.Name = "wtxtExchangeKey";
+            this.wtxtExchangeKey.Size = new System.Drawing.Size(536, 21);
+            this.wtxtExchangeKey.TabIndex = 7;
+            this.wtxtExchangeKey.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtExchangeKey.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtExchangeKey.WaterMarkText = "Empty if you want to use the default key (the one you got in License after log in" +
+    ")";
+            // 
+            // wtxtExchangeDataToEncryptDecrypt
+            // 
+            this.wtxtExchangeDataToEncryptDecrypt.Location = new System.Drawing.Point(51, 49);
+            this.wtxtExchangeDataToEncryptDecrypt.Multiline = true;
+            this.wtxtExchangeDataToEncryptDecrypt.Name = "wtxtExchangeDataToEncryptDecrypt";
+            this.wtxtExchangeDataToEncryptDecrypt.Size = new System.Drawing.Size(582, 63);
+            this.wtxtExchangeDataToEncryptDecrypt.TabIndex = 10;
+            this.wtxtExchangeDataToEncryptDecrypt.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtExchangeDataToEncryptDecrypt.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtExchangeDataToEncryptDecrypt.WaterMarkText = "Data to encrypt/decrypt";
+            // 
+            // wtxtExchangeResult
+            // 
+            this.wtxtExchangeResult.Location = new System.Drawing.Point(6, 136);
+            this.wtxtExchangeResult.Multiline = true;
+            this.wtxtExchangeResult.Name = "wtxtExchangeResult";
+            this.wtxtExchangeResult.Size = new System.Drawing.Size(627, 75);
+            this.wtxtExchangeResult.TabIndex = 8;
+            this.wtxtExchangeResult.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtExchangeResult.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtExchangeResult.WaterMarkText = "Result";
+            // 
+            // wtxtExchangeRequest
+            // 
+            this.wtxtExchangeRequest.Location = new System.Drawing.Point(6, 47);
+            this.wtxtExchangeRequest.Multiline = true;
+            this.wtxtExchangeRequest.Name = "wtxtExchangeRequest";
+            this.wtxtExchangeRequest.Size = new System.Drawing.Size(627, 83);
+            this.wtxtExchangeRequest.TabIndex = 1;
+            this.wtxtExchangeRequest.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtExchangeRequest.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtExchangeRequest.WaterMarkText = "Example:\r\n\r\nt = 0123456789\r\nn = Alcatraz";
+            // 
+            // wtxtExchangeUrl
+            // 
+            this.wtxtExchangeUrl.Location = new System.Drawing.Point(6, 20);
+            this.wtxtExchangeUrl.Name = "wtxtExchangeUrl";
+            this.wtxtExchangeUrl.Size = new System.Drawing.Size(627, 21);
+            this.wtxtExchangeUrl.TabIndex = 0;
+            this.wtxtExchangeUrl.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtExchangeUrl.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtExchangeUrl.WaterMarkText = "http://www.example.com/example.php";
+            // 
+            // wtxtLicenseManagerSearchProgramName
+            // 
+            this.wtxtLicenseManagerSearchProgramName.Location = new System.Drawing.Point(6, 487);
+            this.wtxtLicenseManagerSearchProgramName.Name = "wtxtLicenseManagerSearchProgramName";
+            this.wtxtLicenseManagerSearchProgramName.Size = new System.Drawing.Size(507, 21);
+            this.wtxtLicenseManagerSearchProgramName.TabIndex = 1;
+            this.wtxtLicenseManagerSearchProgramName.WaterMarkColor = System.Drawing.SystemColors.GrayText;
+            this.wtxtLicenseManagerSearchProgramName.WaterMarkFont = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Italic);
+            this.wtxtLicenseManagerSearchProgramName.WaterMarkText = "Netseal ID";
+            // 
+            // cpcmbErrorColor
+            // 
+            this.cpcmbErrorColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cpcmbErrorColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cpcmbErrorColor.FormattingEnabled = true;
+            this.cpcmbErrorColor.Location = new System.Drawing.Point(82, 132);
+            this.cpcmbErrorColor.Name = "cpcmbErrorColor";
+            this.cpcmbErrorColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbErrorColor.TabIndex = 4;
+            // 
+            // cpcmbWarningColor
+            // 
+            this.cpcmbWarningColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cpcmbWarningColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cpcmbWarningColor.FormattingEnabled = true;
+            this.cpcmbWarningColor.Location = new System.Drawing.Point(82, 104);
+            this.cpcmbWarningColor.Name = "cpcmbWarningColor";
+            this.cpcmbWarningColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbWarningColor.TabIndex = 4;
+            // 
+            // cpcmbInformationColor
+            // 
+            this.cpcmbInformationColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cpcmbInformationColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cpcmbInformationColor.FormattingEnabled = true;
+            this.cpcmbInformationColor.Location = new System.Drawing.Point(82, 76);
+            this.cpcmbInformationColor.Name = "cpcmbInformationColor";
+            this.cpcmbInformationColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbInformationColor.TabIndex = 4;
+            // 
+            // cpcmbBackColor
+            // 
+            this.cpcmbBackColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cpcmbBackColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cpcmbBackColor.FormattingEnabled = true;
+            this.cpcmbBackColor.Location = new System.Drawing.Point(82, 48);
+            this.cpcmbBackColor.Name = "cpcmbBackColor";
+            this.cpcmbBackColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbBackColor.TabIndex = 2;
+            // 
+            // cpcmbTimeColor
+            // 
+            this.cpcmbTimeColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cpcmbTimeColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cpcmbTimeColor.FormattingEnabled = true;
+            this.cpcmbTimeColor.Location = new System.Drawing.Point(82, 20);
+            this.cpcmbTimeColor.Name = "cpcmbTimeColor";
+            this.cpcmbTimeColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbTimeColor.TabIndex = 0;
             // 
             // MainForm
             // 

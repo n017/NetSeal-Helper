@@ -48,7 +48,9 @@ namespace NetSeal_Helper.Forms
             IdsDataBase.DataBaseLoaded += LoadLocalLicenses;
 
             Logger.LogInformation("The netseal database is being loaded");
-            IdsDataBase.LoadIds(DATABASE_PATH);           
+            IdsDataBase.LoadIds(DATABASE_PATH);
+
+            this.cbxCheckDataBaseUpdate.CheckedChanged += cbxCheckDataBaseUpdate_CheckedChanged;
         }
 
         private void IdsDataBase_DataBaseLoaded()
@@ -214,6 +216,11 @@ namespace NetSeal_Helper.Forms
         private void llblOpenGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/Alcatraz3222/NetSeal-Helper");
+        }
+
+        private void cbxCheckDataBaseUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            this.SaveSettings();
         }
 
         #endregion
@@ -941,6 +948,6 @@ namespace NetSeal_Helper.Forms
         }
 
         #endregion
-               
+                       
     }
 }

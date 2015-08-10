@@ -45,6 +45,7 @@ namespace NetSeal_Helper
         }
         internal Task<int> UpdateDataBase(string databasePath)
         {
+            int changedLines = 0;
             return Task<int>.Run(() => 
             {
                 try
@@ -54,7 +55,6 @@ namespace NetSeal_Helper
                                         
                     while (!IdsDataBase.IsDataBaseLoaded) { } //wait until the database is loaded
 
-                    int changedLines = 0;
                     var dbLines = File.ReadAllLines(databasePath);
                     foreach (var lineToUpdate in dataToUpdate)
                     {
@@ -75,7 +75,7 @@ namespace NetSeal_Helper
                 }
                 catch
                 {
-                    return 0;
+                    return changedLines;
                 }
             });
         }
