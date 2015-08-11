@@ -169,6 +169,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnInitialize
             // 
+            this.btnInitialize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInitialize.Location = new System.Drawing.Point(550, 45);
             this.btnInitialize.Name = "btnInitialize";
             this.btnInitialize.Size = new System.Drawing.Size(81, 23);
@@ -179,6 +180,9 @@ namespace NetSeal_Helper.Forms
             // 
             // tbcMain
             // 
+            this.tbcMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbcMain.Controls.Add(this.tbpLicense);
             this.tbcMain.Controls.Add(this.tbpExchange);
             this.tbcMain.Controls.Add(this.tbpLicenseManager);
@@ -204,6 +208,8 @@ namespace NetSeal_Helper.Forms
             // 
             // gbxExtras
             // 
+            this.gbxExtras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxExtras.Controls.Add(this.btnGetVariable);
             this.gbxExtras.Controls.Add(this.btnViewNews);
             this.gbxExtras.Controls.Add(this.wtxtVariables);
@@ -255,6 +261,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnBrowseTarget
             // 
+            this.btnBrowseTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowseTarget.Location = new System.Drawing.Point(550, 18);
             this.btnBrowseTarget.Name = "btnBrowseTarget";
             this.btnBrowseTarget.Size = new System.Drawing.Size(81, 23);
@@ -265,7 +272,8 @@ namespace NetSeal_Helper.Forms
             // 
             // gbxLicenseDetails
             // 
-            this.gbxLicenseDetails.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbxLicenseDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxLicenseDetails.Controls.Add(this.lblGlobalMessage);
             this.gbxLicenseDetails.Controls.Add(this.txtGlobalMessage);
@@ -307,6 +315,9 @@ namespace NetSeal_Helper.Forms
             // 
             // txtGlobalMessage
             // 
+            this.txtGlobalMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGlobalMessage.BackColor = System.Drawing.SystemColors.Control;
             this.txtGlobalMessage.Location = new System.Drawing.Point(118, 230);
             this.txtGlobalMessage.Multiline = true;
@@ -344,6 +355,8 @@ namespace NetSeal_Helper.Forms
             // 
             // txtPrivateKeyBase64
             // 
+            this.txtPrivateKeyBase64.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrivateKeyBase64.BackColor = System.Drawing.SystemColors.Control;
             this.txtPrivateKeyBase64.Location = new System.Drawing.Point(118, 192);
             this.txtPrivateKeyBase64.Name = "txtPrivateKeyBase64";
@@ -353,6 +366,8 @@ namespace NetSeal_Helper.Forms
             // 
             // txtPrivateKey
             // 
+            this.txtPrivateKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrivateKey.BackColor = System.Drawing.SystemColors.Control;
             this.txtPrivateKey.Location = new System.Drawing.Point(118, 165);
             this.txtPrivateKey.Name = "txtPrivateKey";
@@ -362,6 +377,8 @@ namespace NetSeal_Helper.Forms
             // 
             // txtPublicToken
             // 
+            this.txtPublicToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPublicToken.BackColor = System.Drawing.SystemColors.Control;
             this.txtPublicToken.Location = new System.Drawing.Point(118, 138);
             this.txtPublicToken.Name = "txtPublicToken";
@@ -509,6 +526,8 @@ namespace NetSeal_Helper.Forms
             // 
             // gbxICrypt
             // 
+            this.gbxICrypt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxICrypt.Controls.Add(this.btnExchangeDecrypt);
             this.gbxICrypt.Controls.Add(this.btnExchangeEncrypt);
             this.gbxICrypt.Controls.Add(this.lblExchangeICryptResult);
@@ -546,6 +565,8 @@ namespace NetSeal_Helper.Forms
             // 
             // lblExchangeICryptResult
             // 
+            this.lblExchangeICryptResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExchangeICryptResult.AutoSize = true;
             this.lblExchangeICryptResult.Location = new System.Drawing.Point(6, 133);
             this.lblExchangeICryptResult.Name = "lblExchangeICryptResult";
@@ -555,6 +576,8 @@ namespace NetSeal_Helper.Forms
             // 
             // txtExchangeICryptResult
             // 
+            this.txtExchangeICryptResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtExchangeICryptResult.Location = new System.Drawing.Point(51, 118);
             this.txtExchangeICryptResult.Multiline = true;
             this.txtExchangeICryptResult.Name = "txtExchangeICryptResult";
@@ -563,6 +586,8 @@ namespace NetSeal_Helper.Forms
             // 
             // lblExchangeKey
             // 
+            this.lblExchangeKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExchangeKey.AutoSize = true;
             this.lblExchangeKey.Location = new System.Drawing.Point(6, 22);
             this.lblExchangeKey.Name = "lblExchangeKey";
@@ -572,6 +597,8 @@ namespace NetSeal_Helper.Forms
             // 
             // lblExchangeDataToCryptDecrypt
             // 
+            this.lblExchangeDataToCryptDecrypt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblExchangeDataToCryptDecrypt.AutoSize = true;
             this.lblExchangeDataToCryptDecrypt.Location = new System.Drawing.Point(6, 75);
             this.lblExchangeDataToCryptDecrypt.Name = "lblExchangeDataToCryptDecrypt";
@@ -581,6 +608,9 @@ namespace NetSeal_Helper.Forms
             // 
             // gbxExchange
             // 
+            this.gbxExchange.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxExchange.Controls.Add(this.btnSaveLastData);
             this.gbxExchange.Controls.Add(this.btnExchangeSaveLastDataAsAscii);
             this.gbxExchange.Controls.Add(this.btnExchangeSaveLastData);
@@ -601,6 +631,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnSaveLastData
             // 
+            this.btnSaveLastData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSaveLastData.Location = new System.Drawing.Point(489, 217);
             this.btnSaveLastData.Name = "btnSaveLastData";
             this.btnSaveLastData.Size = new System.Drawing.Size(144, 23);
@@ -611,6 +642,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeSaveLastDataAsAscii
             // 
+            this.btnExchangeSaveLastDataAsAscii.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeSaveLastDataAsAscii.Location = new System.Drawing.Point(297, 246);
             this.btnExchangeSaveLastDataAsAscii.Name = "btnExchangeSaveLastDataAsAscii";
             this.btnExchangeSaveLastDataAsAscii.Size = new System.Drawing.Size(186, 23);
@@ -621,6 +653,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeSaveLastData
             // 
+            this.btnExchangeSaveLastData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeSaveLastData.Location = new System.Drawing.Point(297, 217);
             this.btnExchangeSaveLastData.Name = "btnExchangeSaveLastData";
             this.btnExchangeSaveLastData.Size = new System.Drawing.Size(186, 23);
@@ -631,6 +664,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeViewLastData
             // 
+            this.btnExchangeViewLastData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeViewLastData.Location = new System.Drawing.Point(146, 217);
             this.btnExchangeViewLastData.Name = "btnExchangeViewLastData";
             this.btnExchangeViewLastData.Size = new System.Drawing.Size(145, 23);
@@ -641,6 +675,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeDecryptLastData
             // 
+            this.btnExchangeDecryptLastData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeDecryptLastData.Location = new System.Drawing.Point(146, 246);
             this.btnExchangeDecryptLastData.Name = "btnExchangeDecryptLastData";
             this.btnExchangeDecryptLastData.Size = new System.Drawing.Size(145, 23);
@@ -651,6 +686,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeClearCookies
             // 
+            this.btnExchangeClearCookies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeClearCookies.Location = new System.Drawing.Point(489, 246);
             this.btnExchangeClearCookies.Name = "btnExchangeClearCookies";
             this.btnExchangeClearCookies.Size = new System.Drawing.Size(144, 23);
@@ -661,6 +697,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeDownloadData
             // 
+            this.btnExchangeDownloadData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeDownloadData.Location = new System.Drawing.Point(6, 246);
             this.btnExchangeDownloadData.Name = "btnExchangeDownloadData";
             this.btnExchangeDownloadData.Size = new System.Drawing.Size(134, 23);
@@ -671,6 +708,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnExchangeUploadValues
             // 
+            this.btnExchangeUploadValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExchangeUploadValues.Location = new System.Drawing.Point(6, 217);
             this.btnExchangeUploadValues.Name = "btnExchangeUploadValues";
             this.btnExchangeUploadValues.Size = new System.Drawing.Size(134, 23);
@@ -694,6 +732,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnLicenseManagerSearchProgramName
             // 
+            this.btnLicenseManagerSearchProgramName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLicenseManagerSearchProgramName.Location = new System.Drawing.Point(519, 485);
             this.btnLicenseManagerSearchProgramName.Name = "btnLicenseManagerSearchProgramName";
             this.btnLicenseManagerSearchProgramName.Size = new System.Drawing.Size(126, 23);
@@ -704,6 +743,9 @@ namespace NetSeal_Helper.Forms
             // 
             // ltvLicenses
             // 
+            this.ltvLicenses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ltvLicenses.ContextMenuStrip = this.cmsLicenseManager;
             this.ltvLicenses.FullRowSelect = true;
             this.ltvLicenses.Location = new System.Drawing.Point(6, 6);
@@ -934,6 +976,8 @@ namespace NetSeal_Helper.Forms
             // 
             // gbxSettingsLogger
             // 
+            this.gbxSettingsLogger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxSettingsLogger.Controls.Add(this.btnClearLog);
             this.gbxSettingsLogger.Controls.Add(this.btnTestErrorMessage);
             this.gbxSettingsLogger.Controls.Add(this.btnRestoreSettings);
@@ -959,6 +1003,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnClearLog
             // 
+            this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearLog.Location = new System.Drawing.Point(492, 124);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(141, 28);
@@ -969,6 +1014,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnTestErrorMessage
             // 
+            this.btnTestErrorMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTestErrorMessage.Location = new System.Drawing.Point(492, 90);
             this.btnTestErrorMessage.Name = "btnTestErrorMessage";
             this.btnTestErrorMessage.Size = new System.Drawing.Size(141, 29);
@@ -979,6 +1025,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnRestoreSettings
             // 
+            this.btnRestoreSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestoreSettings.Location = new System.Drawing.Point(343, 20);
             this.btnRestoreSettings.Name = "btnRestoreSettings";
             this.btnRestoreSettings.Size = new System.Drawing.Size(143, 29);
@@ -989,6 +1036,7 @@ namespace NetSeal_Helper.Forms
             // 
             // brnTestWarnMessage
             // 
+            this.brnTestWarnMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.brnTestWarnMessage.Location = new System.Drawing.Point(492, 55);
             this.brnTestWarnMessage.Name = "brnTestWarnMessage";
             this.brnTestWarnMessage.Size = new System.Drawing.Size(141, 29);
@@ -999,6 +1047,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnTestInfo
             // 
+            this.btnTestInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTestInfo.Location = new System.Drawing.Point(492, 20);
             this.btnTestInfo.Name = "btnTestInfo";
             this.btnTestInfo.Size = new System.Drawing.Size(141, 29);
@@ -1009,6 +1058,7 @@ namespace NetSeal_Helper.Forms
             // 
             // btnSaveSettings
             // 
+            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveSettings.Location = new System.Drawing.Point(343, 55);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(143, 28);
@@ -1077,6 +1127,8 @@ namespace NetSeal_Helper.Forms
             // wtxtTargetPath
             // 
             this.wtxtTargetPath.AllowDrop = true;
+            this.wtxtTargetPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtTargetPath.Location = new System.Drawing.Point(6, 20);
             this.wtxtTargetPath.Name = "wtxtTargetPath";
             this.wtxtTargetPath.Size = new System.Drawing.Size(538, 21);
@@ -1122,6 +1174,8 @@ namespace NetSeal_Helper.Forms
             // 
             // wtxtExchangeKey
             // 
+            this.wtxtExchangeKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtExchangeKey.Location = new System.Drawing.Point(97, 22);
             this.wtxtExchangeKey.Name = "wtxtExchangeKey";
             this.wtxtExchangeKey.Size = new System.Drawing.Size(536, 21);
@@ -1133,6 +1187,8 @@ namespace NetSeal_Helper.Forms
             // 
             // wtxtExchangeDataToEncryptDecrypt
             // 
+            this.wtxtExchangeDataToEncryptDecrypt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtExchangeDataToEncryptDecrypt.Location = new System.Drawing.Point(51, 49);
             this.wtxtExchangeDataToEncryptDecrypt.Multiline = true;
             this.wtxtExchangeDataToEncryptDecrypt.Name = "wtxtExchangeDataToEncryptDecrypt";
@@ -1144,6 +1200,8 @@ namespace NetSeal_Helper.Forms
             // 
             // wtxtExchangeResult
             // 
+            this.wtxtExchangeResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtExchangeResult.Location = new System.Drawing.Point(6, 136);
             this.wtxtExchangeResult.Multiline = true;
             this.wtxtExchangeResult.Name = "wtxtExchangeResult";
@@ -1155,6 +1213,9 @@ namespace NetSeal_Helper.Forms
             // 
             // wtxtExchangeRequest
             // 
+            this.wtxtExchangeRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtExchangeRequest.Location = new System.Drawing.Point(6, 47);
             this.wtxtExchangeRequest.Multiline = true;
             this.wtxtExchangeRequest.Name = "wtxtExchangeRequest";
@@ -1166,6 +1227,8 @@ namespace NetSeal_Helper.Forms
             // 
             // wtxtExchangeUrl
             // 
+            this.wtxtExchangeUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtExchangeUrl.Location = new System.Drawing.Point(6, 20);
             this.wtxtExchangeUrl.Name = "wtxtExchangeUrl";
             this.wtxtExchangeUrl.Size = new System.Drawing.Size(627, 21);
@@ -1176,6 +1239,8 @@ namespace NetSeal_Helper.Forms
             // 
             // wtxtLicenseManagerSearchProgramName
             // 
+            this.wtxtLicenseManagerSearchProgramName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wtxtLicenseManagerSearchProgramName.Location = new System.Drawing.Point(6, 487);
             this.wtxtLicenseManagerSearchProgramName.Name = "wtxtLicenseManagerSearchProgramName";
             this.wtxtLicenseManagerSearchProgramName.Size = new System.Drawing.Size(507, 21);
@@ -1186,6 +1251,8 @@ namespace NetSeal_Helper.Forms
             // 
             // cpcmbErrorColor
             // 
+            this.cpcmbErrorColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cpcmbErrorColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbErrorColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbErrorColor.FormattingEnabled = true;
@@ -1196,6 +1263,8 @@ namespace NetSeal_Helper.Forms
             // 
             // cpcmbWarningColor
             // 
+            this.cpcmbWarningColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cpcmbWarningColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbWarningColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbWarningColor.FormattingEnabled = true;
@@ -1206,6 +1275,8 @@ namespace NetSeal_Helper.Forms
             // 
             // cpcmbInformationColor
             // 
+            this.cpcmbInformationColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cpcmbInformationColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbInformationColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbInformationColor.FormattingEnabled = true;
@@ -1216,6 +1287,8 @@ namespace NetSeal_Helper.Forms
             // 
             // cpcmbBackColor
             // 
+            this.cpcmbBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cpcmbBackColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbBackColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbBackColor.FormattingEnabled = true;
@@ -1226,6 +1299,8 @@ namespace NetSeal_Helper.Forms
             // 
             // cpcmbTimeColor
             // 
+            this.cpcmbTimeColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cpcmbTimeColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbTimeColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbTimeColor.FormattingEnabled = true;
@@ -1243,6 +1318,7 @@ namespace NetSeal_Helper.Forms
             this.Controls.Add(this.rtbLogger);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = global::NetSeal_Helper.Properties.Resources.SkullIcon;
+            this.MinimumSize = new System.Drawing.Size(1064, 601);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NetSeal Helper - Alcatraz3222";
