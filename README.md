@@ -4,6 +4,8 @@ License: GPLv3.0
 
 NetSeal Helper is a program i made which helps you to get some data that is not possible by other way
 
+> Use this program under your own responsibilities
+
 
 > Important note. Select always the original target, or you might get banned
 
