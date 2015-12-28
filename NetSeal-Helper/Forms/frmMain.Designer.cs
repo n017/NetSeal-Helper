@@ -1,8 +1,25 @@
-﻿using System;
+﻿//    Copyright(C) 2015/2016 Alcatraz Developer
+//
+//    This file is part of NetSeal Helper
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.If not, see<http://www.gnu.org/licenses/>.
+
+using System;
 using System.Drawing;
 namespace NetSeal_Helper.Forms
 {
-    partial class MainForm
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +48,7 @@ namespace NetSeal_Helper.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.rtbLogger = new System.Windows.Forms.RichTextBox();
             this.btnInitialize = new System.Windows.Forms.Button();
             this.tbcMain = new System.Windows.Forms.TabControl();
@@ -96,29 +113,34 @@ namespace NetSeal_Helper.Forms
             this.changeGUIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportLicenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbpSettings = new System.Windows.Forms.TabPage();
+            this.btnClearLog = new System.Windows.Forms.Button();
+            this.gbxMiscellaneous = new System.Windows.Forms.GroupBox();
+            this.lblUnknownProgramName = new System.Windows.Forms.Label();
+            this.txtUnknownProgramName = new System.Windows.Forms.TextBox();
+            this.btnTestErrorMessage = new System.Windows.Forms.Button();
+            this.btnRestoreSettings = new System.Windows.Forms.Button();
             this.gbpSourceAndLatestRelease = new System.Windows.Forms.GroupBox();
             this.llblOpenGitHub = new System.Windows.Forms.LinkLabel();
             this.pbxMe = new System.Windows.Forms.PictureBox();
+            this.brnTestWarnMessage = new System.Windows.Forms.Button();
             this.gbpTutorials = new System.Windows.Forms.GroupBox();
             this.llblNetsealTutorial3 = new System.Windows.Forms.LinkLabel();
             this.llblNetsealTutorial2 = new System.Windows.Forms.LinkLabel();
             this.llblNetsealTutorial1 = new System.Windows.Forms.LinkLabel();
+            this.btnTestInfo = new System.Windows.Forms.Button();
             this.gbpSettingsUpdater = new System.Windows.Forms.GroupBox();
             this.cbxCheckDataBaseUpdate = new System.Windows.Forms.CheckBox();
             this.gbxCredentials = new System.Windows.Forms.GroupBox();
             this.cbxSaveCredentials = new System.Windows.Forms.CheckBox();
             this.gbxSettingsLogger = new System.Windows.Forms.GroupBox();
-            this.btnClearLog = new System.Windows.Forms.Button();
-            this.btnTestErrorMessage = new System.Windows.Forms.Button();
-            this.btnRestoreSettings = new System.Windows.Forms.Button();
-            this.brnTestWarnMessage = new System.Windows.Forms.Button();
-            this.btnTestInfo = new System.Windows.Forms.Button();
-            this.btnSaveSettings = new System.Windows.Forms.Button();
             this.lvlErrorColor = new System.Windows.Forms.Label();
             this.lvlWarningColor = new System.Windows.Forms.Label();
             this.lblInformationColor = new System.Windows.Forms.Label();
             this.lvlBackColor = new System.Windows.Forms.Label();
             this.lblTimeColor = new System.Windows.Forms.Label();
+            this.btnSaveSettings = new System.Windows.Forms.Button();
+            this.cmsLogger = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exportLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wtxtVariables = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.wtxtTargetPath = new NetSeal_Helper.Controls.WaterMarkTextBox();
             this.wtxtPassword = new NetSeal_Helper.Controls.WaterMarkTextBox();
@@ -146,12 +168,14 @@ namespace NetSeal_Helper.Forms
             this.tbpLicenseManager.SuspendLayout();
             this.cmsLicenseManager.SuspendLayout();
             this.tbpSettings.SuspendLayout();
+            this.gbxMiscellaneous.SuspendLayout();
             this.gbpSourceAndLatestRelease.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMe)).BeginInit();
             this.gbpTutorials.SuspendLayout();
             this.gbpSettingsUpdater.SuspendLayout();
             this.gbxCredentials.SuspendLayout();
             this.gbxSettingsLogger.SuspendLayout();
+            this.cmsLogger.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtbLogger
@@ -159,6 +183,7 @@ namespace NetSeal_Helper.Forms
             this.rtbLogger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbLogger.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.rtbLogger.ContextMenuStrip = this.cmsLogger;
             this.rtbLogger.Font = new System.Drawing.Font("Verdana", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbLogger.Location = new System.Drawing.Point(678, 3);
             this.rtbLogger.Name = "rtbLogger";
@@ -454,7 +479,7 @@ namespace NetSeal_Helper.Forms
             this.lblPrivateKeyBase64.AutoSize = true;
             this.lblPrivateKeyBase64.Location = new System.Drawing.Point(12, 195);
             this.lblPrivateKeyBase64.Name = "lblPrivateKeyBase64";
-            this.lblPrivateKeyBase64.Size = new System.Drawing.Size(100, 13);
+            this.lblPrivateKeyBase64.Size = new System.Drawing.Size(98, 13);
             this.lblPrivateKeyBase64.TabIndex = 0;
             this.lblPrivateKeyBase64.Text = "P. Key (Base64)";
             // 
@@ -463,7 +488,7 @@ namespace NetSeal_Helper.Forms
             this.lblPrivateKey.AutoSize = true;
             this.lblPrivateKey.Location = new System.Drawing.Point(12, 168);
             this.lblPrivateKey.Name = "lblPrivateKey";
-            this.lblPrivateKey.Size = new System.Drawing.Size(80, 13);
+            this.lblPrivateKey.Size = new System.Drawing.Size(78, 13);
             this.lblPrivateKey.TabIndex = 0;
             this.lblPrivateKey.Text = "P. Key (Hex)";
             // 
@@ -472,7 +497,7 @@ namespace NetSeal_Helper.Forms
             this.lblPublicToken.AutoSize = true;
             this.lblPublicToken.Location = new System.Drawing.Point(12, 141);
             this.lblPublicToken.Name = "lblPublicToken";
-            this.lblPublicToken.Size = new System.Drawing.Size(79, 13);
+            this.lblPublicToken.Size = new System.Drawing.Size(78, 13);
             this.lblPublicToken.TabIndex = 0;
             this.lblPublicToken.Text = "Public Token";
             // 
@@ -490,7 +515,7 @@ namespace NetSeal_Helper.Forms
             this.lblLicenseType.AutoSize = true;
             this.lblLicenseType.Location = new System.Drawing.Point(12, 77);
             this.lblLicenseType.Name = "lblLicenseType";
-            this.lblLicenseType.Size = new System.Drawing.Size(81, 13);
+            this.lblLicenseType.Size = new System.Drawing.Size(80, 13);
             this.lblLicenseType.TabIndex = 0;
             this.lblLicenseType.Text = "License Type";
             // 
@@ -840,11 +865,18 @@ namespace NetSeal_Helper.Forms
             // 
             // tbpSettings
             // 
+            this.tbpSettings.Controls.Add(this.btnClearLog);
+            this.tbpSettings.Controls.Add(this.gbxMiscellaneous);
+            this.tbpSettings.Controls.Add(this.btnTestErrorMessage);
+            this.tbpSettings.Controls.Add(this.btnRestoreSettings);
             this.tbpSettings.Controls.Add(this.gbpSourceAndLatestRelease);
+            this.tbpSettings.Controls.Add(this.brnTestWarnMessage);
             this.tbpSettings.Controls.Add(this.gbpTutorials);
+            this.tbpSettings.Controls.Add(this.btnTestInfo);
             this.tbpSettings.Controls.Add(this.gbpSettingsUpdater);
             this.tbpSettings.Controls.Add(this.gbxCredentials);
             this.tbpSettings.Controls.Add(this.gbxSettingsLogger);
+            this.tbpSettings.Controls.Add(this.btnSaveSettings);
             this.tbpSettings.Location = new System.Drawing.Point(4, 22);
             this.tbpSettings.Name = "tbpSettings";
             this.tbpSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -852,6 +884,67 @@ namespace NetSeal_Helper.Forms
             this.tbpSettings.TabIndex = 3;
             this.tbpSettings.Text = "Settings";
             this.tbpSettings.UseVisualStyleBackColor = true;
+            // 
+            // btnClearLog
+            // 
+            this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearLog.Location = new System.Drawing.Point(362, 127);
+            this.btnClearLog.Name = "btnClearLog";
+            this.btnClearLog.Size = new System.Drawing.Size(141, 28);
+            this.btnClearLog.TabIndex = 7;
+            this.btnClearLog.Text = "Clear Log";
+            this.btnClearLog.UseVisualStyleBackColor = true;
+            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
+            // 
+            // gbxMiscellaneous
+            // 
+            this.gbxMiscellaneous.Controls.Add(this.lblUnknownProgramName);
+            this.gbxMiscellaneous.Controls.Add(this.txtUnknownProgramName);
+            this.gbxMiscellaneous.Location = new System.Drawing.Point(269, 354);
+            this.gbxMiscellaneous.Name = "gbxMiscellaneous";
+            this.gbxMiscellaneous.Size = new System.Drawing.Size(376, 154);
+            this.gbxMiscellaneous.TabIndex = 6;
+            this.gbxMiscellaneous.TabStop = false;
+            this.gbxMiscellaneous.Text = "Miscellaneous";
+            // 
+            // lblUnknownProgramName
+            // 
+            this.lblUnknownProgramName.AutoSize = true;
+            this.lblUnknownProgramName.Location = new System.Drawing.Point(6, 23);
+            this.lblUnknownProgramName.Name = "lblUnknownProgramName";
+            this.lblUnknownProgramName.Size = new System.Drawing.Size(149, 13);
+            this.lblUnknownProgramName.TabIndex = 1;
+            this.lblUnknownProgramName.Text = "Unknown Program Name";
+            // 
+            // txtUnknownProgramName
+            // 
+            this.txtUnknownProgramName.Location = new System.Drawing.Point(161, 20);
+            this.txtUnknownProgramName.Name = "txtUnknownProgramName";
+            this.txtUnknownProgramName.Size = new System.Drawing.Size(209, 21);
+            this.txtUnknownProgramName.TabIndex = 0;
+            this.txtUnknownProgramName.Text = "~";
+            // 
+            // btnTestErrorMessage
+            // 
+            this.btnTestErrorMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTestErrorMessage.Location = new System.Drawing.Point(362, 92);
+            this.btnTestErrorMessage.Name = "btnTestErrorMessage";
+            this.btnTestErrorMessage.Size = new System.Drawing.Size(141, 29);
+            this.btnTestErrorMessage.TabIndex = 6;
+            this.btnTestErrorMessage.Text = "Test Error Message";
+            this.btnTestErrorMessage.UseVisualStyleBackColor = true;
+            this.btnTestErrorMessage.Click += new System.EventHandler(this.btnTestErrorMessage_Click);
+            // 
+            // btnRestoreSettings
+            // 
+            this.btnRestoreSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestoreSettings.Location = new System.Drawing.Point(509, 21);
+            this.btnRestoreSettings.Name = "btnRestoreSettings";
+            this.btnRestoreSettings.Size = new System.Drawing.Size(136, 29);
+            this.btnRestoreSettings.TabIndex = 5;
+            this.btnRestoreSettings.Text = "Restore Settings";
+            this.btnRestoreSettings.UseVisualStyleBackColor = true;
+            this.btnRestoreSettings.Click += new System.EventHandler(this.btnRestoreSettings_Click);
             // 
             // gbpSourceAndLatestRelease
             // 
@@ -885,12 +978,23 @@ namespace NetSeal_Helper.Forms
             this.pbxMe.TabIndex = 0;
             this.pbxMe.TabStop = false;
             // 
+            // brnTestWarnMessage
+            // 
+            this.brnTestWarnMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.brnTestWarnMessage.Location = new System.Drawing.Point(362, 56);
+            this.brnTestWarnMessage.Name = "brnTestWarnMessage";
+            this.brnTestWarnMessage.Size = new System.Drawing.Size(141, 29);
+            this.brnTestWarnMessage.TabIndex = 6;
+            this.brnTestWarnMessage.Text = "Test Warn Message";
+            this.brnTestWarnMessage.UseVisualStyleBackColor = true;
+            this.brnTestWarnMessage.Click += new System.EventHandler(this.brnTestWarnMessage_Click);
+            // 
             // gbpTutorials
             // 
             this.gbpTutorials.Controls.Add(this.llblNetsealTutorial3);
             this.gbpTutorials.Controls.Add(this.llblNetsealTutorial2);
             this.gbpTutorials.Controls.Add(this.llblNetsealTutorial1);
-            this.gbpTutorials.Location = new System.Drawing.Point(6, 245);
+            this.gbpTutorials.Location = new System.Drawing.Point(6, 244);
             this.gbpTutorials.Name = "gbpTutorials";
             this.gbpTutorials.Size = new System.Drawing.Size(639, 100);
             this.gbpTutorials.TabIndex = 4;
@@ -913,7 +1017,7 @@ namespace NetSeal_Helper.Forms
             this.llblNetsealTutorial2.AutoSize = true;
             this.llblNetsealTutorial2.Location = new System.Drawing.Point(6, 47);
             this.llblNetsealTutorial2.Name = "llblNetsealTutorial2";
-            this.llblNetsealTutorial2.Size = new System.Drawing.Size(210, 13);
+            this.llblNetsealTutorial2.Size = new System.Drawing.Size(209, 13);
             this.llblNetsealTutorial2.TabIndex = 1;
             this.llblNetsealTutorial2.TabStop = true;
             this.llblNetsealTutorial2.Text = "Cracking NetSeal Part 2 - Variables";
@@ -930,12 +1034,23 @@ namespace NetSeal_Helper.Forms
             this.llblNetsealTutorial1.Text = "Cracking NetSeal Part 1 - Cracking a Simple Client";
             this.llblNetsealTutorial1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNetsealTutorial1_LinkClicked);
             // 
+            // btnTestInfo
+            // 
+            this.btnTestInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTestInfo.Location = new System.Drawing.Point(362, 20);
+            this.btnTestInfo.Name = "btnTestInfo";
+            this.btnTestInfo.Size = new System.Drawing.Size(141, 29);
+            this.btnTestInfo.TabIndex = 6;
+            this.btnTestInfo.Text = "Test Info Message";
+            this.btnTestInfo.UseVisualStyleBackColor = true;
+            this.btnTestInfo.Click += new System.EventHandler(this.btnTestInfo_Click);
+            // 
             // gbpSettingsUpdater
             // 
             this.gbpSettingsUpdater.Controls.Add(this.cbxCheckDataBaseUpdate);
-            this.gbpSettingsUpdater.Location = new System.Drawing.Point(6, 175);
+            this.gbpSettingsUpdater.Location = new System.Drawing.Point(6, 177);
             this.gbpSettingsUpdater.Name = "gbpSettingsUpdater";
-            this.gbpSettingsUpdater.Size = new System.Drawing.Size(314, 55);
+            this.gbpSettingsUpdater.Size = new System.Drawing.Size(350, 55);
             this.gbpSettingsUpdater.TabIndex = 3;
             this.gbpSettingsUpdater.TabStop = false;
             this.gbpSettingsUpdater.Text = "Updater";
@@ -953,9 +1068,9 @@ namespace NetSeal_Helper.Forms
             // gbxCredentials
             // 
             this.gbxCredentials.Controls.Add(this.cbxSaveCredentials);
-            this.gbxCredentials.Location = new System.Drawing.Point(331, 175);
+            this.gbxCredentials.Location = new System.Drawing.Point(362, 177);
             this.gbxCredentials.Name = "gbxCredentials";
-            this.gbxCredentials.Size = new System.Drawing.Size(314, 55);
+            this.gbxCredentials.Size = new System.Drawing.Size(283, 55);
             this.gbxCredentials.TabIndex = 2;
             this.gbxCredentials.TabStop = false;
             this.gbxCredentials.Text = "Credentials";
@@ -978,15 +1093,9 @@ namespace NetSeal_Helper.Forms
             // 
             this.gbxSettingsLogger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxSettingsLogger.Controls.Add(this.btnClearLog);
-            this.gbxSettingsLogger.Controls.Add(this.btnTestErrorMessage);
-            this.gbxSettingsLogger.Controls.Add(this.btnRestoreSettings);
-            this.gbxSettingsLogger.Controls.Add(this.brnTestWarnMessage);
-            this.gbxSettingsLogger.Controls.Add(this.btnTestInfo);
             this.gbxSettingsLogger.Controls.Add(this.cpcmbErrorColor);
             this.gbxSettingsLogger.Controls.Add(this.cpcmbWarningColor);
             this.gbxSettingsLogger.Controls.Add(this.cpcmbInformationColor);
-            this.gbxSettingsLogger.Controls.Add(this.btnSaveSettings);
             this.gbxSettingsLogger.Controls.Add(this.cpcmbBackColor);
             this.gbxSettingsLogger.Controls.Add(this.cpcmbTimeColor);
             this.gbxSettingsLogger.Controls.Add(this.lvlErrorColor);
@@ -996,76 +1105,10 @@ namespace NetSeal_Helper.Forms
             this.gbxSettingsLogger.Controls.Add(this.lblTimeColor);
             this.gbxSettingsLogger.Location = new System.Drawing.Point(6, 6);
             this.gbxSettingsLogger.Name = "gbxSettingsLogger";
-            this.gbxSettingsLogger.Size = new System.Drawing.Size(639, 163);
+            this.gbxSettingsLogger.Size = new System.Drawing.Size(350, 163);
             this.gbxSettingsLogger.TabIndex = 0;
             this.gbxSettingsLogger.TabStop = false;
             this.gbxSettingsLogger.Text = "Logger";
-            // 
-            // btnClearLog
-            // 
-            this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearLog.Location = new System.Drawing.Point(492, 124);
-            this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(141, 28);
-            this.btnClearLog.TabIndex = 7;
-            this.btnClearLog.Text = "Clear Log";
-            this.btnClearLog.UseVisualStyleBackColor = true;
-            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
-            // 
-            // btnTestErrorMessage
-            // 
-            this.btnTestErrorMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestErrorMessage.Location = new System.Drawing.Point(492, 90);
-            this.btnTestErrorMessage.Name = "btnTestErrorMessage";
-            this.btnTestErrorMessage.Size = new System.Drawing.Size(141, 29);
-            this.btnTestErrorMessage.TabIndex = 6;
-            this.btnTestErrorMessage.Text = "Test Error Message";
-            this.btnTestErrorMessage.UseVisualStyleBackColor = true;
-            this.btnTestErrorMessage.Click += new System.EventHandler(this.btnTestErrorMessage_Click);
-            // 
-            // btnRestoreSettings
-            // 
-            this.btnRestoreSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestoreSettings.Location = new System.Drawing.Point(343, 20);
-            this.btnRestoreSettings.Name = "btnRestoreSettings";
-            this.btnRestoreSettings.Size = new System.Drawing.Size(143, 29);
-            this.btnRestoreSettings.TabIndex = 5;
-            this.btnRestoreSettings.Text = "Restore Settings";
-            this.btnRestoreSettings.UseVisualStyleBackColor = true;
-            this.btnRestoreSettings.Click += new System.EventHandler(this.btnRestoreSettings_Click);
-            // 
-            // brnTestWarnMessage
-            // 
-            this.brnTestWarnMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.brnTestWarnMessage.Location = new System.Drawing.Point(492, 55);
-            this.brnTestWarnMessage.Name = "brnTestWarnMessage";
-            this.brnTestWarnMessage.Size = new System.Drawing.Size(141, 29);
-            this.brnTestWarnMessage.TabIndex = 6;
-            this.brnTestWarnMessage.Text = "Test Warn Message";
-            this.brnTestWarnMessage.UseVisualStyleBackColor = true;
-            this.brnTestWarnMessage.Click += new System.EventHandler(this.brnTestWarnMessage_Click);
-            // 
-            // btnTestInfo
-            // 
-            this.btnTestInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestInfo.Location = new System.Drawing.Point(492, 20);
-            this.btnTestInfo.Name = "btnTestInfo";
-            this.btnTestInfo.Size = new System.Drawing.Size(141, 29);
-            this.btnTestInfo.TabIndex = 6;
-            this.btnTestInfo.Text = "Test Info Message";
-            this.btnTestInfo.UseVisualStyleBackColor = true;
-            this.btnTestInfo.Click += new System.EventHandler(this.btnTestInfo_Click);
-            // 
-            // btnSaveSettings
-            // 
-            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveSettings.Location = new System.Drawing.Point(343, 55);
-            this.btnSaveSettings.Name = "btnSaveSettings";
-            this.btnSaveSettings.Size = new System.Drawing.Size(143, 28);
-            this.btnSaveSettings.TabIndex = 3;
-            this.btnSaveSettings.Text = "Save Settings";
-            this.btnSaveSettings.UseVisualStyleBackColor = true;
-            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // lvlErrorColor
             // 
@@ -1081,7 +1124,7 @@ namespace NetSeal_Helper.Forms
             this.lvlWarningColor.AutoSize = true;
             this.lvlWarningColor.Location = new System.Drawing.Point(6, 107);
             this.lvlWarningColor.Name = "lvlWarningColor";
-            this.lvlWarningColor.Size = new System.Drawing.Size(72, 13);
+            this.lvlWarningColor.Size = new System.Drawing.Size(71, 13);
             this.lvlWarningColor.TabIndex = 1;
             this.lvlWarningColor.Text = "Warn Color";
             // 
@@ -1111,6 +1154,31 @@ namespace NetSeal_Helper.Forms
             this.lblTimeColor.Size = new System.Drawing.Size(70, 13);
             this.lblTimeColor.TabIndex = 1;
             this.lblTimeColor.Text = "Time Color";
+            // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveSettings.Location = new System.Drawing.Point(509, 56);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.Size = new System.Drawing.Size(136, 29);
+            this.btnSaveSettings.TabIndex = 3;
+            this.btnSaveSettings.Text = "Save Settings";
+            this.btnSaveSettings.UseVisualStyleBackColor = true;
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
+            // 
+            // cmsLogger
+            // 
+            this.cmsLogger.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportLogToolStripMenuItem});
+            this.cmsLogger.Name = "cmsLogger";
+            this.cmsLogger.Size = new System.Drawing.Size(131, 26);
+            // 
+            // exportLogToolStripMenuItem
+            // 
+            this.exportLogToolStripMenuItem.Name = "exportLogToolStripMenuItem";
+            this.exportLogToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.exportLogToolStripMenuItem.Text = "Export Log";
+            this.exportLogToolStripMenuItem.Click += new System.EventHandler(this.exportLogToolStripMenuItem_Click);
             // 
             // wtxtVariables
             // 
@@ -1256,9 +1324,9 @@ namespace NetSeal_Helper.Forms
             this.cpcmbErrorColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbErrorColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbErrorColor.FormattingEnabled = true;
-            this.cpcmbErrorColor.Location = new System.Drawing.Point(82, 132);
+            this.cpcmbErrorColor.Location = new System.Drawing.Point(81, 132);
             this.cpcmbErrorColor.Name = "cpcmbErrorColor";
-            this.cpcmbErrorColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbErrorColor.Size = new System.Drawing.Size(262, 22);
             this.cpcmbErrorColor.TabIndex = 4;
             // 
             // cpcmbWarningColor
@@ -1268,9 +1336,9 @@ namespace NetSeal_Helper.Forms
             this.cpcmbWarningColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbWarningColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbWarningColor.FormattingEnabled = true;
-            this.cpcmbWarningColor.Location = new System.Drawing.Point(82, 104);
+            this.cpcmbWarningColor.Location = new System.Drawing.Point(81, 104);
             this.cpcmbWarningColor.Name = "cpcmbWarningColor";
-            this.cpcmbWarningColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbWarningColor.Size = new System.Drawing.Size(262, 22);
             this.cpcmbWarningColor.TabIndex = 4;
             // 
             // cpcmbInformationColor
@@ -1280,9 +1348,9 @@ namespace NetSeal_Helper.Forms
             this.cpcmbInformationColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbInformationColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbInformationColor.FormattingEnabled = true;
-            this.cpcmbInformationColor.Location = new System.Drawing.Point(82, 76);
+            this.cpcmbInformationColor.Location = new System.Drawing.Point(81, 76);
             this.cpcmbInformationColor.Name = "cpcmbInformationColor";
-            this.cpcmbInformationColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbInformationColor.Size = new System.Drawing.Size(262, 22);
             this.cpcmbInformationColor.TabIndex = 4;
             // 
             // cpcmbBackColor
@@ -1292,9 +1360,9 @@ namespace NetSeal_Helper.Forms
             this.cpcmbBackColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbBackColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbBackColor.FormattingEnabled = true;
-            this.cpcmbBackColor.Location = new System.Drawing.Point(82, 48);
+            this.cpcmbBackColor.Location = new System.Drawing.Point(81, 48);
             this.cpcmbBackColor.Name = "cpcmbBackColor";
-            this.cpcmbBackColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbBackColor.Size = new System.Drawing.Size(262, 22);
             this.cpcmbBackColor.TabIndex = 2;
             // 
             // cpcmbTimeColor
@@ -1304,12 +1372,12 @@ namespace NetSeal_Helper.Forms
             this.cpcmbTimeColor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cpcmbTimeColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cpcmbTimeColor.FormattingEnabled = true;
-            this.cpcmbTimeColor.Location = new System.Drawing.Point(82, 20);
+            this.cpcmbTimeColor.Location = new System.Drawing.Point(81, 20);
             this.cpcmbTimeColor.Name = "cpcmbTimeColor";
-            this.cpcmbTimeColor.Size = new System.Drawing.Size(255, 22);
+            this.cpcmbTimeColor.Size = new System.Drawing.Size(262, 22);
             this.cpcmbTimeColor.TabIndex = 0;
             // 
-            // MainForm
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1319,7 +1387,7 @@ namespace NetSeal_Helper.Forms
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = global::NetSeal_Helper.Properties.Resources.SkullIcon;
             this.MinimumSize = new System.Drawing.Size(1064, 601);
-            this.Name = "MainForm";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NetSeal Helper - Alcatraz3222";
             this.tbcMain.ResumeLayout(false);
@@ -1339,6 +1407,8 @@ namespace NetSeal_Helper.Forms
             this.tbpLicenseManager.PerformLayout();
             this.cmsLicenseManager.ResumeLayout(false);
             this.tbpSettings.ResumeLayout(false);
+            this.gbxMiscellaneous.ResumeLayout(false);
+            this.gbxMiscellaneous.PerformLayout();
             this.gbpSourceAndLatestRelease.ResumeLayout(false);
             this.gbpSourceAndLatestRelease.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMe)).EndInit();
@@ -1350,6 +1420,7 @@ namespace NetSeal_Helper.Forms
             this.gbxCredentials.PerformLayout();
             this.gbxSettingsLogger.ResumeLayout(false);
             this.gbxSettingsLogger.PerformLayout();
+            this.cmsLogger.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1459,5 +1530,10 @@ namespace NetSeal_Helper.Forms
         private System.Windows.Forms.LinkLabel llblNetsealTutorial3;
         private System.Windows.Forms.PictureBox pbxMe;
         private System.Windows.Forms.LinkLabel llblOpenGitHub;
+        private System.Windows.Forms.GroupBox gbxMiscellaneous;
+        private System.Windows.Forms.Label lblUnknownProgramName;
+        private System.Windows.Forms.TextBox txtUnknownProgramName;
+        private System.Windows.Forms.ContextMenuStrip cmsLogger;
+        private System.Windows.Forms.ToolStripMenuItem exportLogToolStripMenuItem;
     }
 }

@@ -16,30 +16,38 @@
 //    along with this program.If not, see<http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace NetSeal_Helper.Settings
+namespace NetSeal_Helper.Forms
 {
-    [Serializable]
-    public struct LicenseSettings
+    public partial class frmGUIDChanger : Form
     {
-        public bool LoadCredentials 
+        public string NewGUID
         {
             get;
             set;
         }
-        public string UserName 
+
+        public frmGUIDChanger(string guid)
         {
-            get;
-            set;
+            InitializeComponent();
+            this.txtNewGuid.Text = guid;
         }
-        public string Password 
+
+        private void btnOk_Click(object sender, EventArgs e)
         {
-            get;
-            set;
+            if (txtNewGuid.TextLength < 32)
+            {
+                MessageBox.Show("Make sure the Length of the new GUID are 32 chars", "Invalid GUID Length", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            NewGUID = this.txtNewGuid.Text;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
     }
 }

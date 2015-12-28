@@ -1,21 +1,35 @@
-﻿using System;
+﻿//    Copyright(C) 2015/2016 Alcatraz Developer
+//
+//    This file is part of NetSeal Helper
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.If not, see<http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 using NetSeal_Helper.NetSeal;
-using NetSeal_Helper.NetSeal.Echange;
+using NetSeal_Helper.NetSeal.Exchange;
 using NetSeal_Helper.NetSeal.LicenseManager;
 using NetSeal_Helper.Extensions;
 using NetSeal_Helper.Logger;
@@ -23,10 +37,18 @@ using NetSeal_Helper.Settings;
 
 namespace NetSeal_Helper.Forms
 {
-    public partial class MainForm : Form
+    public partial class frmMain : Form
     {
         private const string LICENSE_PATH = "Nimoru\\LicenseSE";
         private const string DATABASE_PATH = "IDs.db";
+
+        private const string GITHUB_PROJECT_URL = "https://github.com/Alcatraz3222/NetSeal-Helper";
+
+        private const string FIRST_TUTORIAL_URL = "https://www.youtube.com/watch?v=BOu2Yrmq7V0";  //Cracking a simple client
+        private const string SECOND_TUTORIAL_URL = "https://www.youtube.com/watch?v=pcKD45U61VI"; //Variables
+        private const string THIRD_TUTORIAL_URL = "https://www.youtube.com/watch?v=_zN4uq-3TEU";  //Exchange
+
+        private readonly Version AssemblyVersion;
 
         private List<LicenseFile> Licenses = new List<LicenseFile>();
 
@@ -35,15 +57,17 @@ namespace NetSeal_Helper.Forms
         Exchange ExchangeHelper = new Exchange();
 
 
-        public MainForm()
+        public frmMain()
         {
             InitializeComponent();
             InitializeColumnsAndItems();
             InitializeColorPickers();
 
+            AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
             Logger = new RichTextBoxLogger(rtbLogger);
             LoadSettings();
-
+            
             IdsDataBase.DataBaseLoaded += IdsDataBase_DataBaseLoaded;
             IdsDataBase.DataBaseLoaded += LoadLocalLicenses;
 
@@ -53,10 +77,16 @@ namespace NetSeal_Helper.Forms
             this.cbxCheckDataBaseUpdate.CheckedChanged += cbxCheckDataBaseUpdate_CheckedChanged;
         }
 
+        /// <summary>
+        /// Occurs when the Netseal database is loaded
+        /// </summary>
         private void IdsDataBase_DataBaseLoaded()
         {
             Logger.LogInformation("Netseal database loaded successfully");
         }
+        /// <summary>
+        /// Retrieves the possible ID of a netseal program by checking .log files
+        /// </summary>
         private void RetrieveID()
         {
             var pathName = Path.GetDirectoryName(wtxtTargetPath.Text);
@@ -77,7 +107,9 @@ namespace NetSeal_Helper.Forms
                 this.wtxtId.Text = Path.GetFileNameWithoutExtension(files[0]);
             }
         }
-
+        /// <summary>
+        /// Initializes the items of each ColorPickerTextBox
+        /// </summary>
         private void InitializeColorPickers()
         {
             var colors = Enum.GetNames(typeof(KnownColor));
@@ -93,16 +125,26 @@ namespace NetSeal_Helper.Forms
         {
             var dUpdater = new DataBaseUpdater();
             var updatedLines = await dUpdater.UpdateDataBase(DATABASE_PATH);
-            Logger.LogInformation(updatedLines > 0 ? "Updated " + updatedLines + " lines" : "No database update available");
+            dUpdater?.UpdateDataBase(DATABASE_PATH);
+            Logger.LogInformation(updatedLines > 0 
+                ? "Updated " + updatedLines + " lines" 
+                : "No database update available");
+
+            if (updatedLines > 0)
+                IdsDataBase.LoadIds(DATABASE_PATH);
         }
 
 
         #region Settings Methods
 
+        /// <summary>
+        /// Load application settings
+        /// </summary>
         private void LoadSettings()
         {
-            var settings = AppSettings.Load();
-            if (settings == null)
+            var settings = AppSettings.Load() ?? AppSettings.Default;
+
+            if (string.IsNullOrWhiteSpace(settings.SettingsVersion) || new Version(settings.SettingsVersion) < AssemblyVersion)
             {
                 settings = AppSettings.Default;
                 settings.Save();
@@ -134,14 +176,19 @@ namespace NetSeal_Helper.Forms
             this.Logger.ErrorColor = Color.FromName(errorColor);
 
             //Database
-            this.cbxCheckDataBaseUpdate.Checked = settings.DataBaseAutoUpdateCheck;
+            this.cbxCheckDataBaseUpdate.Checked = settings.LicenseManager.DataBaseAutoUpdateCheck;
+            this.txtUnknownProgramName.Text = settings.LicenseManager.UnknownProgramName;
+
+            Logger.LogInformation("Settings loaded successfully");
+
             if (cbxCheckDataBaseUpdate.Checked)
                 UpdateDataBase();
-
-            Logger.LogInformation("Settings loaded succesfully");            
         }
+        /// <summary>
+        /// Save current application settings
+        /// </summary>
         private void SaveSettings()
-        {        
+        {
             //Logger colors
             var timeColor = this.cpcmbTimeColor.Items[this.cpcmbTimeColor.SelectedIndex].ToString();
             var infoColor = this.cpcmbInformationColor.Items[this.cpcmbInformationColor.SelectedIndex].ToString();
@@ -151,6 +198,8 @@ namespace NetSeal_Helper.Forms
 
             var settings = new AppSettings();
 
+            settings.SettingsVersion = AssemblyVersion.ToString();
+
             settings.Logger.TimeColor = timeColor;
             settings.Logger.InformationColor = infoColor;
             settings.Logger.WarningColor = warningColor;
@@ -158,18 +207,35 @@ namespace NetSeal_Helper.Forms
             settings.Logger.BackColor = backColor;
 
             //Database
-            settings.DataBaseAutoUpdateCheck = this.cbxCheckDataBaseUpdate.Checked;
+            settings.LicenseManager.DataBaseAutoUpdateCheck = this.cbxCheckDataBaseUpdate.Checked;
+            settings.LicenseManager.UnknownProgramName = this.txtUnknownProgramName.Text;
 
             settings.Save();
+            Logger.LogInformation("Settins saved successfully, reloading settings");
             LoadSettings();
         }
+        /// <summary>
+        /// Save default settings
+        /// </summary>
         private void SaveDefaultSettings()
         {
             AppSettings.Default.Save();
+            Logger.LogInformation("Settins restored successfully, reloading settings");
             LoadSettings();
         }
-        
 
+        #endregion
+
+        #region Settings Events
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+        private void btnRestoreSettings_Click(object sender, EventArgs e)
+        {
+            SaveDefaultSettings();
+        }
         private void btnTestInfo_Click(object sender, EventArgs e)
         {
             Logger.LogInformation("Testing Info Color");
@@ -187,35 +253,22 @@ namespace NetSeal_Helper.Forms
             this.Logger.Clear();
         }
 
-        #endregion
-
-        #region Settings Events
-
-        private void btnSaveSettings_Click(object sender, EventArgs e)
-        {
-            SaveSettings();
-        }
-        private void btnRestoreSettings_Click(object sender, EventArgs e)
-        {
-            SaveDefaultSettings();
-        }
-        
         private void llblNetsealTutorial1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.youtube.com/watch?v=BOu2Yrmq7V0");
+            Process.Start(FIRST_TUTORIAL_URL);
         }
         private void llblNetsealTutorial2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.youtube.com/watch?v=pcKD45U61VI");
+            Process.Start(SECOND_TUTORIAL_URL);
         }
         private void llblNetsealTutorial3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.youtube.com/watch?v=_zN4uq-3TEU");
+            Process.Start(THIRD_TUTORIAL_URL);
         }
 
         private void llblOpenGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/Alcatraz3222/NetSeal-Helper");
+            Process.Start(GITHUB_PROJECT_URL);
         }
 
         private void cbxCheckDataBaseUpdate_CheckedChanged(object sender, EventArgs e)
@@ -228,53 +281,56 @@ namespace NetSeal_Helper.Forms
 
         #region License Methods
 
+        /// <summary>
+        /// Check license status
+        /// </summary>
         private void CheckStatus()
         {
             var value = License.LastData[0];
             string message = string.Empty;
 
-            switch ((LicenseStatus)value)
+            switch ((LoginStatus)value)
             {
-                case LicenseStatus.Success:
+                case LoginStatus.Success:
                     break;
-                case LicenseStatus.Failed:
+                case LoginStatus.Failed:
                     message = "Failed to log in";
                     break;
-                case LicenseStatus.BadParams:
+                case LoginStatus.BadParams:
                     message = "Bad parameters, not sure what's this";
                     break;
-                case LicenseStatus.BadLength:
+                case LoginStatus.BadLength:
                     message = "Bad Length";
                     break;
-                case LicenseStatus.InvalidChars:
+                case LoginStatus.InvalidChars:
                     message = "Your username contains invalid characters";
                     break;
-                case LicenseStatus.NullValue:
+                case LoginStatus.NullValue:
                     message = "No license has been found, make sure you redeemed the code";
                     break;
-                case LicenseStatus.UsedValue:
+                case LoginStatus.UsedValue:
                     message = "Used value";
                     break;
-                case LicenseStatus.AccessDenied:
+                case LoginStatus.AccessDenied:
                     message = "Access denied, check your username, password and ID";
                     break;
-                case LicenseStatus.LimitReached:
+                case LoginStatus.LimitReached:
                     message = "Limit Reached";
                     break;
-                case LicenseStatus.Expired:
+                case LoginStatus.Expired:
                     message = "Your license has expired";
                     break;
-                case LicenseStatus.Locked:
+                case LoginStatus.Locked:
                     message = "Your license is locked";
                     break;
-                case LicenseStatus.Banned:
+                case LoginStatus.Banned:
                     var data = new byte[License.LastData.Length - 1];
                     Buffer.BlockCopy(License.LastData, 1, data, 0, data.Length);
 
                     string banReason = data.ToUtf8String();
                     message = "Your account is banned by the following reason: " + banReason;
                     break;
-                case LicenseStatus.SystemOffline:
+                case LoginStatus.SystemOffline:
                     message = "Netseal system is offline or your IP is locked";
                     break;
                 default:
@@ -294,6 +350,9 @@ namespace NetSeal_Helper.Forms
                 Logger.LogWarning(message + ", error code: " + (byte)value);
             }
         }
+        /// <summary>
+        /// Initializes the netseal login process
+        /// </summary>
         private async void Initialize()
         {
             try
@@ -308,8 +367,8 @@ namespace NetSeal_Helper.Forms
                     return;
                 }
 
-                var license = new LicenseReader();
-                var licenseFile = license.ReadLocaLicense(wtxtId.Text);
+                var licenseReader = new LicenseReader();
+                var licenseFile = licenseReader.ReadLocaLicense(wtxtId.Text);
                 if (string.IsNullOrEmpty(licenseFile.GUID))
                 {
                     Logger.LogWarning("No license found for this program, make sure you have a license of this program in your computer and try again");
@@ -339,6 +398,9 @@ namespace NetSeal_Helper.Forms
                 this.btnInitialize.Enabled = true;
             }
         }
+        /// <summary>
+        /// Load Netseal License details
+        /// </summary>
         private async void LoadLicenseDetails()
         {
             //Clear Textboxes
@@ -423,6 +485,11 @@ namespace NetSeal_Helper.Forms
 
             Logger.LogInformation("License details loaded");
         }
+        /// <summary>
+        /// Get a netseal variable
+        /// </summary>
+        /// <param name="varName">Variable name</param>
+        /// <returns></returns>
         private Task<string> GetVariable(string varName)
         {
             return Task.Run(() =>
@@ -431,6 +498,10 @@ namespace NetSeal_Helper.Forms
             });
         }
 
+        /// <summary>
+        /// Starts and checks if the Netseal Exchange is done successful
+        /// </summary>
+        /// <returns></returns>
         private Task<bool> Exchange()
         {
             return Task.Run(() =>
@@ -446,6 +517,12 @@ namespace NetSeal_Helper.Forms
                 return exchange;
             });
         }
+        /// <summary>
+        /// Sing In netseal
+        /// </summary>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <returns></returns>
         private Task<bool> SignIn(string username, string password)
         {
             return Task.Run(() =>
@@ -461,6 +538,10 @@ namespace NetSeal_Helper.Forms
                 return joined;
             });
         }
+        /// <summary>
+        /// Gets netseal status
+        /// </summary>
+        /// <returns></returns>
         private Task<bool> GetStatus()
         {
             return Task.Run(() =>
@@ -476,6 +557,10 @@ namespace NetSeal_Helper.Forms
                 return status;
             });
         }
+        /// <summary>
+        /// Checks if your license is sanctioned
+        /// </summary>
+        /// <returns></returns>
         private Task<bool> Sanction()
         {
             return Task.Run(() =>
@@ -498,19 +583,20 @@ namespace NetSeal_Helper.Forms
 
         private void btnBrowseTarget_Click(object sender, EventArgs e)
         {
-            var browseTarget = new OpenFileDialog();
-            browseTarget.Title = "Select the target";
-            browseTarget.Multiselect = false;
-            browseTarget.Filter = "Executable File|*.exe";
-
-            var result = browseTarget.ShowDialog();
-
-            if (result == System.Windows.Forms.DialogResult.OK)
+            using (var browseTarget = new OpenFileDialog())
             {
-                this.wtxtTargetPath.Text = browseTarget.FileName;
-                RetrieveID();
+                browseTarget.Title = "Select the target";
+                browseTarget.Multiselect = false;
+                browseTarget.Filter = "Executable File|*.exe";
+
+                var result = browseTarget.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.wtxtTargetPath.Text = browseTarget.FileName;
+                    RetrieveID();
+                }
             }
-            browseTarget.Dispose();
         }
         private void btnInitialize_Click(object sender, EventArgs e)
         {
@@ -534,20 +620,20 @@ namespace NetSeal_Helper.Forms
         {
             var path = ((string[])e.Data.GetData(DataFormats.FileDrop))[0].ToString();
 
-            if (!(Path.GetExtension(path).ToLower() == ".exe"))
-                return;
-
-            this.wtxtTargetPath.Text = path;
-            RetrieveID();
+            if (Path.GetExtension(path).ToLower() == ".exe")
+            {
+                this.wtxtTargetPath.Text = path;
+                RetrieveID();
+            }
         }
 
         private async void btnGetVariable_Click(object sender, EventArgs e)
         {
             var variables = wtxtVariables.Text.Split(',');
 
-            for (int index = 0; index < variables.Length; index++)
+            foreach(var variable in variables)
             {
-                var variableName = variables[index].Trim();
+                var variableName = variable.Trim();
                 if (!string.IsNullOrWhiteSpace(variableName))
                 {
                     Logger.LogInformation(
@@ -557,6 +643,9 @@ namespace NetSeal_Helper.Forms
         }
         private async void btnViewNews_Click(object sender, EventArgs e)
         {
+            if(License == null)
+                return;
+
             Logger.LogInformation("Getting news, this might take a while");
 
             var newsObjects = await Task.Run(() => License.GetNews());
@@ -573,7 +662,7 @@ namespace NetSeal_Helper.Forms
                     newsPost.PostMessage = await Task.Run(() => License.GetPostMessage(newsPost.ID));
                     newsList.Add(newsPost);
                 }
-                var newsForm = new NewsForm(newsList);
+                var newsForm = new frmNews(newsList);
                 newsForm.ShowDialog();
                 newsForm.Dispose();
             }
@@ -589,6 +678,11 @@ namespace NetSeal_Helper.Forms
 
         #region Exchange Methods
 
+        /// <summary>
+        /// Makes a web connection through a POST method
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="collection"></param>
         private async void UploadValues(string address, NameValueCollection collection)
         {
             try
@@ -601,6 +695,10 @@ namespace NetSeal_Helper.Forms
                 Logger.LogError(ex.Message);
             }
         }
+        /// <summary>
+        /// Downloads data from a website
+        /// </summary>
+        /// <param name="address"></param>
         private async void DownloadData(string address)
         {
             try
@@ -614,6 +712,10 @@ namespace NetSeal_Helper.Forms
             }
         }
 
+        /// <summary>
+        /// Save Exchange Last Data with any accepted encoding
+        /// </summary>
+        /// <param name="encoding"></param>
         private void SaveLastData(Encoding encoding)
         {
             if (ExchangeHelper.LastData == null)
@@ -622,21 +724,26 @@ namespace NetSeal_Helper.Forms
                 return;
             }
 
-            var saveDialog = new SaveFileDialog();
-            saveDialog.Title = "Select where you want to save the last data";
-            saveDialog.Filter = "Text File|*.txt|All Files|*.*";
+            using (var saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Title = "Select where you want to save the last data";
+                saveDialog.Filter = "Text File|*.txt|All Files|*.*";
 
-            var result = saveDialog.ShowDialog();
+                var result = saveDialog.ShowDialog();
 
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {                
-                var stream = new StreamWriter(saveDialog.FileName);
-                stream.Write(encoding.GetString(ExchangeHelper.LastData));
-                stream.Close();
-                stream.Dispose();
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (var stream = new StreamWriter(saveDialog.FileName))
+                    {
+                        stream.Write(encoding.GetString(ExchangeHelper.LastData));
+                        stream.Close();
+                    }
+                }
             }
-            saveDialog.Dispose();
         }
+        /// <summary>
+        /// Save Exchange Lasta Data Bytes
+        /// </summary>
         private void SaveLastData()
         {
             if (ExchangeHelper.LastData == null)
@@ -663,7 +770,8 @@ namespace NetSeal_Helper.Forms
 
         private void btnExchangeUploadValues_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.wtxtExchangeRequest.Text))
+            if (string.IsNullOrWhiteSpace(this.wtxtExchangeRequest.Text) ||
+                string.IsNullOrWhiteSpace(this.wtxtExchangeUrl.Text))
                 return;
 
             var lines = this.wtxtExchangeRequest.Lines;
@@ -674,14 +782,14 @@ namespace NetSeal_Helper.Forms
                 var command = line.Split('=');
                 collection.Add(command[0].Trim(), command[1].Trim());
             }
-            UploadValues(wtxtExchangeUrl.Text, collection);
+            this.UploadValues(wtxtExchangeUrl.Text, collection);
         }
         private void btnExchangeDownloadData_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(wtxtExchangeUrl.Text))
-                return;
-
-            DownloadData(wtxtExchangeUrl.Text);
+            if (!string.IsNullOrWhiteSpace(wtxtExchangeUrl.Text))
+            {
+                DownloadData(wtxtExchangeUrl.Text);
+            }
         }
         private void btnExchangeClearCookies_Click(object sender, EventArgs e)
         {
@@ -774,6 +882,9 @@ namespace NetSeal_Helper.Forms
 
         #region License Manager Methods
 
+        /// <summary>
+        /// Initializes the columns and sizes of the LicenseManager ListView
+        /// </summary>
         private void InitializeColumnsAndItems()
         {
             //License Manager
@@ -784,7 +895,10 @@ namespace NetSeal_Helper.Forms
             this.ltvLicenses.Columns.Add("Username").Width = 100;
             this.ltvLicenses.Columns.Add("Password (SHA1)").Width = 115;
         }
-        private async void LoadLocalLicenses()
+        /// <summary>
+        /// Load your Netseal Licenses
+        /// </summary>
+        private void LoadLocalLicenses()
         {
             this.ltvLicenses.Items.Clear();
 
@@ -810,15 +924,17 @@ namespace NetSeal_Helper.Forms
                 try
                 {
                     var fileName = Path.GetFileNameWithoutExtension(file);
-                    var id = await Task.Run(() => IdsDataBase.GetIdByMd5Hash(fileName));
+                    var dbTuple = IdsDataBase.IDsDataBase[fileName];
+                    var id = dbTuple.Item1; //Netseal ID
+                    var programName = dbTuple.Item2; //Netseal program name
+
                     if (!string.IsNullOrEmpty(id))
                     {
                         var licenseFile = licenseReader.ReadLicenseFrom(file, id);
                         //Store the license
                         Licenses.Add(licenseFile);
 
-                        var programName = await Task.Run(() => IdsDataBase.GetProgramNameById(id));
-                        programName = !string.IsNullOrEmpty(programName) ? programName : "{ Unknown Name }";
+                        programName = !string.IsNullOrEmpty(programName) ? programName : this.txtUnknownProgramName.Text;
 
                         ltvLicenses.Items.Add(id).SubItems.AddRange(new string[]
                         {
@@ -838,6 +954,10 @@ namespace NetSeal_Helper.Forms
             }
             Logger.LogInformation("Loaded " + counter + " license(s)");
         }
+        /// <summary>
+        /// Copy a subitem of the License Manger ListView at the selected index
+        /// </summary>
+        /// <param name="cellIndex">Index of the SubItem you want to get</param>
         private void CopyLicenseItemToClipboard(short cellIndex)
         {
             var columnName = ltvLicenses.Columns[cellIndex].Text;
@@ -858,12 +978,26 @@ namespace NetSeal_Helper.Forms
 
         private void btnLicenseManagerSearchProgramName_Click(object sender, EventArgs e)
         {
-            var programName = IdsDataBase.GetProgramNameById(wtxtLicenseManagerSearchProgramName.Text);
+            this.btnLicenseManagerSearchProgramName.Enabled = false;
 
-            if (!string.IsNullOrEmpty(programName))
-                Logger.LogInformation("Found: " + programName);
-            else
-                Logger.LogError("No name found");
+            try
+            {
+                var id = wtxtLicenseManagerSearchProgramName.Text;
+                var tuple = IdsDataBase.IDsDataBase.Values.FirstOrDefault(x => x.Item1 == id);
+                var programName = string.Empty;
+
+                if (tuple != null)
+                    programName = tuple.Item2;
+
+                if (!string.IsNullOrEmpty(programName))
+                    Logger.LogInformation("Found: " + programName);
+                else
+                    Logger.LogWarning("No name found for: " + id);
+            }
+            finally
+            {
+                this.btnLicenseManagerSearchProgramName.Enabled = true;
+            }
         }
 
         private void getLicensesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -894,15 +1028,16 @@ namespace NetSeal_Helper.Forms
 
         private void changeGUIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ltvLicenses.SelectedIndices.Count > 0)
-            {
-                if (MessageBox.Show("Are you sure you want to change your GUID, your license may stop working after", "GUID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
-                {
-                    return;
-                }
+            if (ltvLicenses.SelectedIndices.Count <= 0)
+                return;
 
-                var orgGuid = ltvLicenses.GetSubItemTextFromSelectedIndex(2);
-                var guidForm = new GUIDChangerForm(orgGuid);
+            if (MessageBox.Show("Are you sure you want to change your GUID, your license may stop working after", "GUID", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
+                return;
+
+
+            var originalGuid = ltvLicenses.GetSubItemTextFromSelectedIndex(2);
+            using (var guidForm = new frmGUIDChanger(originalGuid))
+            {
                 var result = guidForm.ShowDialog();
 
                 if (result == System.Windows.Forms.DialogResult.OK)
@@ -918,36 +1053,67 @@ namespace NetSeal_Helper.Forms
                     Licenses[index] = licenseFile;
 
                     var writer = new LicenseWriter();
-                    writer.WriteLicense(writer.LocalPath + licenseFile.LicenseName, licenseFile.ID, licenseFile);
+                    writer.WriteLicense(
+                        writer.LocalPath + licenseFile.LicenseName,
+                        licenseFile.ID,
+                        licenseFile);
+
                     Logger.LogInformation("GUID changed, reloading licenses");
                     LoadLocalLicenses();
                 }
-                guidForm.Dispose();
             }
+
         }
         private void exportLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var folderDialog = new FolderBrowserDialog();
-            var result = folderDialog.ShowDialog();
-
-            if (result == System.Windows.Forms.DialogResult.OK)
+            using (var folderDialog = new FolderBrowserDialog())
             {
-                var path = folderDialog.SelectedPath;
-                var licenseWriter = new LicenseWriter();
+                var result = folderDialog.ShowDialog();
 
-                int counter = 0;
-                for (int index = 0; index < ltvLicenses.SelectedIndices.Count; index++)
+                if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    var license = this.Licenses[ltvLicenses.SelectedIndices[index]];
-                    licenseWriter.WriteLicense(path + "\\" + license.LicenseName, license.ID, license, FileAttributes.Normal);
-                    counter++;
+                    var path = folderDialog.SelectedPath;
+                    var licenseWriter = new LicenseWriter();
+
+                    int counter = 0;
+                    for (int index = 0; index < ltvLicenses.SelectedIndices.Count; index++)
+                    {
+                        var license = this.Licenses[ltvLicenses.SelectedIndices[index]];
+                        licenseWriter.WriteLicense(
+                            path + "\\" + license.LicenseName,
+                            license.ID,
+                            license,
+                            FileAttributes.Normal);
+
+                        counter++;
+                    }
+                    Logger.LogInformation("Exported " + counter + " licenses");
                 }
-                Logger.LogInformation("Exported " + counter + " licenses");
             }
-            folderDialog.Dispose();
         }
 
         #endregion
-                       
+
+
+        #region Logger
+
+        private void exportLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+            using (var dialog = new SaveFileDialog())
+            {
+                dialog.ShowHelp = false;
+                dialog.Filter = "Text File|.txt";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var log = this.rtbLogger.Text.Split('\n');
+                    File.WriteAllLines(dialog.FileName, log);
+                    Logger.LogInformation("Log Exported Successfully");
+                }
+            }
+        }
+
+        #endregion
+        
     }
 }
