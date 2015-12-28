@@ -10,7 +10,7 @@ NetSeal Helper is a program i made which helps you to get some data that is not 
 > Important note. Select always the original target, or you might get banned
 
 
-#Features
+##Features
 
     - Get variables
 
@@ -28,7 +28,7 @@ NetSeal Helper is a program i made which helps you to get some data that is not 
     
     
 
-#How to use this program?
+##How to use this program?
 
 * [Part 1](https://www.youtube.com/watch?v=BOu2Yrmq7V0)
 
@@ -38,7 +38,7 @@ NetSeal Helper is a program i made which helps you to get some data that is not 
 
 
 
-#Special thanks
+##Special thanks
 
 Alcatraz3222 - Giving thanks to my self? huh :P
 
@@ -48,12 +48,21 @@ LegacyHMU - thanks to him for let me his account to show how to use the program
 
 
 
-#Would you like to support the DataBase?
+##Would you like to support the DataBase?
 
 I made a small database, open the file IDs.db with any text decompiler, as you will see it ins't complet, so if you want to support it you have just to send me programs with netseal, and i will add them to the database
 
 
 
-#Bugs?
+##How to Compile
+you need Visual Studio 2015 since this projects uses code of C# 6.
+
+Once you open the project on Visual Studio 2015 Copy the files from "NetSeal-Helper/bin/Required Files" to your Debug/bin folder or where ever your compiled program is.
+
+if you have problems with the StrongNameKey just remove it or add a new one, is up to you.
+
+
+
+##Bugs?
 
 Contact me at AlcatrazDeveloper@gmail.com
