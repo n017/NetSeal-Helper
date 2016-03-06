@@ -1,4 +1,21 @@
-﻿using System;
+﻿//    Copyright(C) 2015/2016 Alcatraz Developer
+//
+//    This file is part of NetSeal Helper
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.If not, see<http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +28,7 @@ namespace NetSeal_Helper
     {
         public static event Action DataBaseLoaded;
 
-        internal static List<IdsDataBaseFormat> IDsDataBase = new List<IdsDataBaseFormat>();
+        internal static Dictionary<string, Tuple<string, string>> IDsDataBase = new Dictionary<string, Tuple<string, string>>();
 
         internal static bool IsDataBaseLoaded
         {
@@ -22,11 +39,7 @@ namespace NetSeal_Helper
         internal static void OnDataBaseLoaded()
         {
             IsDataBaseLoaded = true;
-
-            if (DataBaseLoaded != null)
-            {
-                DataBaseLoaded();
-            }
+            DataBaseLoaded?.Invoke();
         }
 
         internal async static void LoadIds(string filePath)
@@ -35,44 +48,27 @@ namespace NetSeal_Helper
                 return;
 
             if (!File.Exists(filePath))
-                throw new FileNotFoundException("Failed to locate " + Path.GetFileName(filePath));
+            {
+                System.Windows.Forms.MessageBox.Show("Failed to locate " + Path.GetFileName(filePath));
+                return;
+            }
 
             await Task.Run(() =>
             {
                 foreach (var line in File.ReadLines(filePath))
                 {
-                    var splitted = line.Split('|');
+                    var splittedLine = line.Split('|');
+                    var md5Hash = splittedLine[0];
+                    var netsealId = splittedLine[1];
+                    var programName = string.Empty;
 
-                    var idDataBase = new IdsDataBaseFormat();
-                    idDataBase.MD5Hash = splitted[0];
-                    idDataBase.ID = splitted[1];
+                    if (splittedLine.Length > 2)
+                        programName = splittedLine[2];
 
-                    if (splitted.Length > 2)
-                    {
-                        idDataBase.ProgramName = splitted[2];
-                    }
-                    IDsDataBase.Add(idDataBase);
+                    IDsDataBase[md5Hash] = new Tuple<string, string>(netsealId, programName);
                 }
             });
             OnDataBaseLoaded();
-        }
-        internal static string GetProgramNameById(string id)
-        {
-            string upperId = id.ToUpper();
-
-            if (IsDataBaseLoaded)
-                return IDsDataBase.FirstOrDefault(x => x.ID == upperId).ProgramName;
-            else
-                throw new Exception("The database is not yet loaded");
-        }
-        internal static string GetIdByMd5Hash(string hash)
-        {
-            string upperHah = hash.ToUpper();
-
-            if (IsDataBaseLoaded)
-                return IDsDataBase.FirstOrDefault(x => x.MD5Hash == upperHah).ID;
-            else
-                throw new Exception("The database is not yet loaded");
         }
     }
 }

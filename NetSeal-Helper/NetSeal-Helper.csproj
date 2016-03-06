@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NetSeal_Helper</RootNamespace>
     <AssemblyName>NetSeal-Helper</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -39,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,7 +52,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>NetSeal_Helper.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -62,7 +63,7 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
@@ -111,23 +112,23 @@
     <Compile Include="DataBaseUpdater.cs" />
     <Compile Include="Extensions\ListViewExtensions.cs" />
     <Compile Include="Extensions\LoggerExtensions.cs" />
-    <Compile Include="Forms\GUIDChangerForm.cs">
+    <Compile Include="Forms\frmGUIDChanger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GUIDChangerForm.Designer.cs">
-      <DependentUpon>GUIDChangerForm.cs</DependentUpon>
+    <Compile Include="Forms\frmGUIDChanger.Designer.cs">
+      <DependentUpon>frmGUIDChanger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewsForm.cs">
+    <Compile Include="Forms\frmNews.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewsForm.Designer.cs">
-      <DependentUpon>NewsForm.cs</DependentUpon>
+    <Compile Include="Forms\frmNews.Designer.cs">
+      <DependentUpon>frmNews.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewMessageForm.cs">
+    <Compile Include="Forms\frmViewMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewMessageForm.Designer.cs">
-      <DependentUpon>ViewMessageForm.cs</DependentUpon>
+    <Compile Include="Forms\frmViewMessage.Designer.cs">
+      <DependentUpon>frmViewMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="IdsDataBase.cs" />
     <Compile Include="Logger\ILogger.cs" />
@@ -138,11 +139,11 @@
     <Compile Include="NetSeal\License.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="NetSeal\LicenseManager\LicenseFramework.cs" />
     <Compile Include="NetSeal\LicenseManager\LicenseManagerBase.cs" />
@@ -152,26 +153,26 @@
     <Compile Include="NetSeal\LicenseManager\Sorter\GenericArraySortHelperFr2.0.cs" />
     <Compile Include="NetSeal\LicenseManager\Sorter\GenericArraySortHelperFr4_5.cs" />
     <Compile Include="NetSeal\LicenseManager\Sorter\IntrospectiveSortUtilities.cs" />
-    <Compile Include="NetSeal\LicenseStatus.cs" />
+    <Compile Include="NetSeal\LoginStatus.cs" />
     <Compile Include="NetSeal\LicenseType.cs" />
     <Compile Include="NetSeal\NewsPost.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IdsDataBaseFormat.cs" />
     <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="Settings\LicenseManagerSettings.cs" />
     <Compile Include="Settings\LicenseSettings.cs" />
     <Compile Include="Settings\LoggerSettings.cs" />
-    <EmbeddedResource Include="Forms\GUIDChangerForm.resx">
-      <DependentUpon>GUIDChangerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmGUIDChanger.resx">
+      <DependentUpon>frmGUIDChanger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewsForm.resx">
-      <DependentUpon>NewsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmNews.resx">
+      <DependentUpon>frmNews.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewMessageForm.resx">
-      <DependentUpon>ViewMessageForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmViewMessage.resx">
+      <DependentUpon>frmViewMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -199,9 +200,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icons\SkullIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Sorter.dll" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
